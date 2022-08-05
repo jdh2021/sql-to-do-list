@@ -6,11 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js"></script>
     <script src="scripts/client.js"></script>
+    <!--Sourcing in Google Font-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+    </style>
+    <!--Sourcing in Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles/style.css">
     <title>To-Do List</title>
 </head>
 <body>
-    <h1>To-Do List</h1>
-    
+    <header>
+        To-Do List
+    </header>
+    <!-- <form> -->
+    <div id="input-container">
+        <input type="text" id="task-input" placeholder="do it!">
+        <button id="task-button">
+            <i class="fas fa-solid fa-pen-to-square"></i>
+        </button>
+    <!-- </form> -->
+    </div>
+    <div id="task-container">
+        <ul id="task-list">
+            <li class="task-item">
+                <span class="task-to-complete">Task</span>
+                <button class="complete-button">
+                    <i class="fas fa-solid fa-calendar-check"></i></i>
+                </button>
+                <button class="delete-button">
+                    <i class="fas fa-solid fa-calendar-minus"></i>
+                </button>
+            </li>
+            <li class="task-item completed-task">
+                <span class="task-to-complete">Task</span>
+                <button class="complete-button">
+                    <i class="fas fa-solid fa-calendar-check"></i></i>
+                </button>
+                <button class="delete-button">
+                    <i class="fas fa-solid fa-calendar-minus"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>

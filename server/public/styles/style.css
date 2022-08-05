@@ -1,3 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: aquamarine;
+    background-color: #E2DDE7;
+    font-family: 'Caveat', cursive;
+    color: #36393B;
+    min-height: 100%;
+}
+
+header {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+header, #input-container {
+    margin: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input, #task-button {
+    color: #36393B;
+    padding: 0.3rem;
+    font-size: 1.6rem;
+    font-family: 'Caveat', cursive;
+    background-color: #F7F0FD;
+    border-color: #36393B;
+    border-width: thin;
+    border-radius: 0.2rem;
+}
+
+input {
+    min-width: 50%;
+}
+
+#task-button {
+    background-color: #C5BBCC;
+}
+
+#task-container {
+    margin: 1.2rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7F0FD;
+    border: thin solid #36393B;
+    border-radius: 0.2rem;
+}
+
+#task-list {
+    list-style: none;
+    min-width: 90%;
+}
+
+.task-item {
+    padding: 0.3rem;
+    color: #36393B;
+    font-size: 1.6rem;
+    background-color: #F7F0FD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.task-to-complete {
+    flex: 1;
+}
+
+.complete-button, .delete-button {
+    padding: 0.3rem;
+    color: #36393B;
+    font-size: 1.6rem;
+    border-color: #36393B solid;
+    border-width: thin;
+    border-radius: 0.2rem;
+}
+
+.complete-button {
+    background-color: #59C3C3;
+}
+
+.delete-button {
+    background-color: #FFEB85;
 }
