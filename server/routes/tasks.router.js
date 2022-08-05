@@ -11,4 +11,9 @@ router.post('/', (req, res) => {
     res.sendStatus(201);
 });
 
+router.get('/', (req, res) => {
+    console.log('in router GET');
+    res.send(taskArray);
+});
+
 module.exports = router;
