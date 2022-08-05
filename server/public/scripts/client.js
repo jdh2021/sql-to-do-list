@@ -4,6 +4,7 @@ $(readyNow);
 
 function readyNow() {
     console.log('in readyNow, jQuery sourced');
+    getTask();
     $('#task-button').on('click', addTask);
     $('body').on('click', '.complete-button', completeTask);
     $('body').on('click', '.delete-button', deleteTask);

@@ -40,7 +40,6 @@ input {
 }
 
 #task-button {
-    /* background-color: #FFE45E; */
     background-color: #E8BB20;
 }
 
@@ -70,7 +69,7 @@ input {
 }
 
 .task-to-complete {
-    margin: 0.4rem;
+    margin-left: 1rem;
     flex: 1;
 }
 
@@ -95,6 +94,7 @@ input {
 
 .completed-task {
     text-decoration: line-through;
+    text-decoration-thickness: 0.1rem;
     background-color: #FFE45E;
     opacity: 0.3;
     transition: 0.75s;

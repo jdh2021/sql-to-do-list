@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const taskArray = []
+const taskArray = [];
 
 router.post('/', (req, res) => {
     console.log('in router POST');
