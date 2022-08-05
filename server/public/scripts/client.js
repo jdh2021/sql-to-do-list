@@ -72,7 +72,7 @@ function completeTask () {
 }
 
 function deleteTask () {
-    console.log('in deleteTask')
+    console.log('in deleteTask');
     $(this).parent().remove();
 }
 

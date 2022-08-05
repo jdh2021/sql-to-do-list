@@ -21,7 +21,6 @@ header, #input-container {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 input, #task-button {
@@ -37,6 +36,12 @@ input, #task-button {
 
 input {
     min-width: 50%;
+}
+
+input:focus {
+    outline: none !important;
+    border: thin solid #36393B;
+    box-shadow: 0 0 0.4rem #9d8eae;
 }
 
 #task-button {
