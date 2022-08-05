@@ -27,7 +27,7 @@ header, #input-container {
 input, #task-button {
     color: #36393B;
     padding: 0.3rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-family: 'Caveat', cursive;
     background-color: #F7F0FD;
     border-color: #36393B;
@@ -41,6 +41,18 @@ input {
 
 #task-button {
     background-color: #E8BB20;
+}
+
+#task-button:hover {
+    background-color: #DFAB00;
+}
+
+.complete-button:hover {
+    background-color: #54B8B8;
+}
+
+.delete-button:hover {
+    background-color: #CBE4C8;
 }
 
 #task-container {
@@ -95,7 +107,11 @@ input {
 .completed-task {
     text-decoration: line-through;
     text-decoration-thickness: 0.1rem;
-    background-color: #FFE45E;
-    opacity: 0.3;
-    transition: 0.75s;
+    background-color: #FFEAA0;
+    transition: 0.5s;
+}
+
+.fade-task {
+    opacity: 0.4;
+    transition: 0.5s;
 }

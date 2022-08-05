@@ -14,10 +14,15 @@ const taskToPost = {};
 
 function addTask() {
     console.log('in addTask');
-    taskToPost.description = $('#task-input').val();
-    console.log(taskToPost);
-    postTask();
-    $('#task-input').val('');
+    if ($('#task-input').val() === '') {
+        alert('You haven\'t entered a task!');
+        return false;
+    } else {
+        taskToPost.description = $('#task-input').val();
+        console.log(taskToPost);
+        postTask();
+        $('#task-input').val('');
+    }
 }
 
 function postTask() {
@@ -63,6 +68,7 @@ function getTask() {
 function completeTask () {
     console.log('in completeTask');
     $(this).parent().toggleClass('completed-task');
+    $(this).siblings('.task-to-complete').toggleClass('fade-task');
 }
 
 function deleteTask () {
