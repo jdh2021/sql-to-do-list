@@ -40,12 +40,13 @@ input {
 }
 
 #task-button {
-    background-color: #C5BBCC;
+    /* background-color: #FFE45E; */
+    background-color: #E8BB20;
 }
 
 #task-container {
     margin: 1.2rem;
-    padding: 0.5rem;
+    min-height: 2.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,11 +57,10 @@ input {
 
 #task-list {
     list-style: none;
-    min-width: 90%;
+    min-width: 100%;
 }
 
 .task-item {
-    padding: 0.3rem;
     color: #36393B;
     font-size: 1.6rem;
     background-color: #F7F0FD;
@@ -70,6 +70,7 @@ input {
 }
 
 .task-to-complete {
+    margin: 0.4rem;
     flex: 1;
 }
 
@@ -83,9 +84,18 @@ input {
 }
 
 .complete-button {
-    background-color: #59C3C3;
+    background-color: #61CECE;
+    margin: 0.3rem 0rem;
 }
 
 .delete-button {
-    background-color: #FFEB85;
+    margin-right: 0.3rem;
+    background-color:#E5F4E3;
+}
+
+.completed-task {
+    text-decoration: line-through;
+    background-color: #FFE45E;
+    opacity: 0.3;
+    transition: 0.75s;
 }

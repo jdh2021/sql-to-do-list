@@ -5,6 +5,8 @@ $(readyNow);
 function readyNow() {
     console.log('in readyNow, jQuery sourced');
     $('#task-button').on('click', addTask);
+    $('body').on('click', '.complete-button', completeTask);
+    $('body').on('click', '.delete-button', deleteTask);
 }
 
 const taskToPost = {};
@@ -56,3 +58,14 @@ function getTask() {
         alert('There\'s an error.');
     });
 }
+
+function completeTask () {
+    console.log('in completeTask');
+    $(this).parent().toggleClass('completed-task');
+}
+
+function deleteTask () {
+    console.log('in deleteTask')
+    $(this).parent().remove();
+}
+
