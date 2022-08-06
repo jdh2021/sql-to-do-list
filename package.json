@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/jdh2021/weekend-sql-to-do-list/issues"
   },
-  "homepage": "https://github.com/jdh2021/weekend-sql-to-do-list#readme"
+  "homepage": "https://github.com/jdh2021/weekend-sql-to-do-list#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  }
 }
