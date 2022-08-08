@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,37 +10,51 @@ body {
     background-color: #E2DDE7;
     font-family: 'Caveat', cursive;
     color: #36393B;
-    min-height: 100%;
 }
 
-header {
-    font-size: 2.4rem;
+h1 {
+    font-size: 2rem;
     font-weight: bold;
 }
 
-header, #input-container {
-    margin: 1.2rem;
+#header-input-container {
+    border: 1px solid blue;
+    width: 100%;
+    margin: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
-input, #task-button {
+#header-container, #input-container {
+    text-align: center;
+    width: 85%;
+    margin: .2rem 0;
+}
+
+#header-container {
+    border: 1px solid green;
+}
+
+#input-container {
+    border: 1px solid yellow;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#task-input {
     color: #36393B;
-    padding: 0.3rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    padding: 0.2rem;
     font-family: 'Caveat', cursive;
     background-color: #F7F0FD;
-    border-color: #36393B;
-    border-width: thin;
-    border-radius: 0.2rem;
+    border: thin solid #36393B;
+    width: 70%;
 }
 
-input {
-    min-width: 50%;
-}
-
-input:focus {
+#task-input:focus {
     outline: none !important;
     border: thin solid #36393B;
     box-shadow: 0 0 0.4rem #9d8eae;
@@ -46,10 +62,69 @@ input:focus {
 
 #task-button {
     background-color: #E8BB20;
+    font-size: 1.3rem;
+    padding: 0.2rem;
+    border: thin solid #36393B;
+    border-radius: 0.2rem;
 }
 
 #task-button:hover {
+    cursor: pointer;
     background-color: #DFAB00;
+}
+
+#task-list {
+    margin: auto;
+    width: 85%;
+    background-color: #F7F0FD;
+    border: thin solid #36393B;
+    border-radius: 0.2rem;
+    min-height: 3rem;
+}
+
+#task-container {
+    border: 1px solid red;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.task-item {
+    border: 1px solid lawngreen;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+    color: #36393B;
+    font-size: 1.4rem;
+    background-color: #F7F0FD;
+}
+
+.button-container {
+    display: flex;
+    border: 1px solid fuchsia;
+}
+
+.complete-button, .delete-button {
+    padding: 0.3rem;
+    color: #36393B;
+    border: thin #36393B solid;
+    border-radius: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.complete-button {
+    cursor: pointer;
+    background-color: #61CECE;
+}
+
+.delete-button {
+    cursor: pointer;
+    margin-right: 0.3rem;
+    background-color:#E5F4E3;
 }
 
 .complete-button:hover {
@@ -60,63 +135,14 @@ input:focus {
     background-color: #CBE4C8;
 }
 
-#task-container {
-    margin: 1.2rem;
-    min-height: 2.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #F7F0FD;
-    border: thin solid #36393B;
-    border-radius: 0.2rem;
-}
-
-#task-list {
-    list-style: none;
-    min-width: 100%;
-}
-
-.task-item {
-    color: #36393B;
-    font-size: 1.6rem;
-    background-color: #F7F0FD;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
-}
-
-.task-to-complete {
-    margin-left: 1rem;
-    flex: 1;
-}
-
-.complete-button, .delete-button {
-    padding: 0.3rem;
-    color: #36393B;
-    font-size: 1.6rem;
-    border-color: #36393B solid;
-    border-width: thin;
-    border-radius: 0.2rem;
-}
-
-.complete-button {
-    background-color: #61CECE;
-    margin: 0.3rem 0rem;
-}
-
-.delete-button {
-    margin-right: 0.3rem;
-    background-color:#E5F4E3;
-}
-
 .completed-task {
-    text-decoration: line-through;
-    text-decoration-thickness: 0.1rem;
     background-color: #FFEAA0;
     transition: 0.5s;
 }
 
-.fade-task {
+.fade-strike {
+    text-decoration: line-through;
+    text-decoration-thickness: 0.06rem;
     opacity: 0.4;
     transition: 0.5s;
 }

@@ -48,15 +48,17 @@ function getTask() {
         $('#task-list').empty();
         for (let task of response) {
             $('#task-list').append(`
-                <li class="task-item">
+                <div class="task-item">
                     <span class="task-to-complete">${task.description}</span>
-                    <button class="complete-button">
-                        <i class="fas fa-solid fa-calendar-check"></i></i>
-                    </button>
-                    <button class="delete-button">
-                        <i class="fas fa-solid fa-calendar-minus"></i>
-                    </button>
-                </li>
+                    <div class="button-container">
+                        <button class="complete-button">
+                            <i class="fas fa-solid fa-calendar-check"></i></i>
+                        </button>
+                        <button class="delete-button">
+                            <i class="fas fa-solid fa-calendar-minus"></i>
+                        </button>
+                    </div>
+                </div>
             `);
         }
     }).catch(function(error) {
@@ -67,12 +69,12 @@ function getTask() {
 
 function completeTask () {
     console.log('in completeTask');
-    $(this).parent().toggleClass('completed-task');
-    $(this).siblings('.task-to-complete').toggleClass('fade-task');
+    $(this).parent().parent().toggleClass('completed-task');
+    $(this).parent().parent().children('.task-to-complete').toggleClass('fade-strike');
 }
 
 function deleteTask () {
     console.log('in deleteTask');
-    $(this).parent().remove();
+    $(this).parent().parent().remove();
 }
 
