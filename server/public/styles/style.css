@@ -103,6 +103,11 @@ h1 {
     background-color: #F7F0FD;
 }
 
+.task-time-container {
+    display: flex;
+    border: 1px solid skyblue;
+}
+
 .button-container {
     display: flex;
     border: 1px solid fuchsia;

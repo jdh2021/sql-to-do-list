@@ -48,13 +48,15 @@ function getTask() {
         $('#task-list').empty();
         for (let task of response) {
             $('#task-list').append(`
-                <div class="task-item uncompleted-task">
-                    <span class="task-to-complete">${task.description}</span>
+                <div class="task-item">
+                    <div class="task-time">
+                        <span class="task-to-complete">${task.description}</span>
+                    </div>
                     <div class="button-container">
-                        <button class="complete-button">
-                            <i class="fas fa-solid fa-calendar-check"></i></i>
-                        </button>
-                        <button class="delete-button">
+                            <button class="complete-button">
+                                <i class="fas fa-solid fa-calendar-check"></i></i>
+                                </button>
+                            <button class="delete-button">
                             <i class="fas fa-solid fa-calendar-minus"></i>
                         </button>
                     </div>
@@ -70,7 +72,12 @@ function getTask() {
 function completeTask () {
     console.log('in completeTask');
     $(this).parent().parent().toggleClass('completed-task');
-    $(this).parent().parent().children('.task-to-complete').toggleClass('fade-strike');
+    $(this).parent().parent().children('.task-time').children('.task-to-complete').toggleClass('fade-strike');
+    if($(this).parent().parent().children('.task-time').children().hasClass('time-placeholder')) {
+        $(this).parent().parent().children('.task-time').children('.time-placeholder').remove();
+    } else { 
+        $(this).parent().parent().children('.task-time').append(`<span class="time-placeholder">Done: 0:00 am</span>`);
+    }
 }
 
 function deleteTask () {
