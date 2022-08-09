@@ -124,7 +124,8 @@ h1 {
 .delete-button {
     cursor: pointer;
     margin-right: 0.3rem;
-    background-color:#E5F4E3;
+    background-color: #ffa99c;
+    /* background-color:#E5F4E3; */
 }
 
 .complete-button:hover {
@@ -132,7 +133,8 @@ h1 {
 }
 
 .delete-button:hover {
-    background-color: #CBE4C8;
+    background-color: #f58c7c;
+    /* background-color: #CBE4C8; */
 }
 
 .completed-task {

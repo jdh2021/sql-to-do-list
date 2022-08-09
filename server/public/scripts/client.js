@@ -48,7 +48,7 @@ function getTask() {
         $('#task-list').empty();
         for (let task of response) {
             $('#task-list').append(`
-                <div class="task-item">
+                <div class="task-item uncompleted-task">
                     <span class="task-to-complete">${task.description}</span>
                     <div class="button-container">
                         <button class="complete-button">
