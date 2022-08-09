@@ -76,7 +76,17 @@ function completeTask () {
     if($(this).parent().parent().children('.task-time').children().hasClass('time-placeholder')) {
         $(this).parent().parent().children('.task-time').children('.time-placeholder').remove();
     } else { 
-        $(this).parent().parent().children('.task-time').append(`<span class="time-placeholder">Done: 0:00 am</span>`);
+        $(this).parent().parent().children('.task-time').append(`<span class="time-placeholder">Done: 0:00 a.m.</span>`);
+        // $.ajax({
+        //     method: 'GET',
+        //     url: '/tasks'
+        // }).then(function(response) {
+        // console.log('Response from server is:', response);
+        //     for(let task of response) {
+        //         console.log(task);
+                
+        //     }
+        // })
     }
 }
 
