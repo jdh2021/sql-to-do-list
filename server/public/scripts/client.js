@@ -54,10 +54,10 @@ function getTask() {
                         <span class="task-to-complete">${task.description}</span>
                     </div>
                     <div class="button-container">
-                            <button class="complete-button">
-                                <i class="fas fa-solid fa-calendar-check"></i></i>
-                                </button>
-                            <button class="delete-button">
+                        <button class="complete-button">
+                            <i class="fas fa-solid fa-calendar-check"></i></i>
+                        </button>
+                        <button class="delete-button" data-id="${task.id}">
                             <i class="fas fa-solid fa-calendar-minus"></i>
                         </button>
                     </div>
@@ -93,6 +93,18 @@ function completeTask () {
 
 function deleteTask () {
     console.log('in deleteTask');
-    $(this).parent().parent().remove();
+    const taskToDeleteId = $(this).data('id');
+    console.log(taskToDeleteId);
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${taskToDeleteId}`
+    }).then(function(response) {
+        console.log('Response from server is:', response);
+        getTask();
+    }).catch(function(error) {
+        console.log('Error:', error);
+        alert('There\'s an error.');
+    });
+    // $(this).parent().parent().remove();
 }
 

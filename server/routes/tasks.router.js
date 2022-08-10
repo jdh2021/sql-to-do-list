@@ -3,8 +3,6 @@ const router = express.Router();
 const moment = require('moment');
 const pool = require('../modules/pool.js');
 
-// const taskArray = [];
-
 let taskToPost = '';
 
 router.post('/', (req, res) => {
@@ -36,6 +34,18 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });
+
+router.delete('/:id', (req, res) => {
+    console.log('in DELETE /tasks');
+    const queryText = 'DELETE FROM "todo" WHERE "id" = $1;'
+    pool.query(queryText, [req.params.id]).then((results) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error in DELETE /tasks');
+        res.sendStatus(500);
+    })
+})
+// const taskArray = [];
 
 // router.post('/', (req, res) => {
 //     console.log('in router POST');
