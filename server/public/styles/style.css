@@ -26,14 +26,15 @@ h1 {
     flex-wrap: wrap;
 }
 
-#header-container, #input-container {
+#header-container {
     text-align: center;
     width: 85%;
-    margin: .2rem 0;
+    margin-top: 0.5rem;
 }
 
 #header-container {
     border: 1px solid green;
+    width: 75%;
 }
 
 #input-container {
@@ -42,40 +43,46 @@ h1 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
 }
 
 #task-input {
     color: #36393B;
-    font-size: 1.3rem;
-    padding: 0.2rem;
+    font-size: 1.4rem;
+    padding: 0.15rem 0.5rem;
     font-family: 'Caveat', cursive;
     background-color: #F7F0FD;
     border: thin solid #36393B;
-    width: 70%;
 }
 
 #task-input:focus {
-    outline: none !important;
+    outline: none;
     border: thin solid #36393B;
     box-shadow: 0 0 0.4rem #9d8eae;
 }
 
 #task-button {
+    color: #36393B;
     background-color: #E8BB20;
-    font-size: 1.3rem;
-    padding: 0.2rem;
+    font-size: 1.25rem;
+    padding: 0 0.5rem;
     border: thin solid #36393B;
-    border-radius: 0.2rem;
+}
+
+#task-button:focus {
+    box-shadow: none;
 }
 
 #task-button:hover {
     cursor: pointer;
-    background-color: #DFAB00;
+    color: white;
+    background-color: #d6a401;
 }
 
 #task-list {
     margin: auto;
-    width: 85%;
+    width: 75%;
     background-color: #F7F0FD;
     border: thin solid #36393B;
     border-radius: 0.2rem;
@@ -89,6 +96,7 @@ h1 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 1.5rem 0;
 }
 
 .task-item {
@@ -97,15 +105,10 @@ h1 {
     justify-content: space-between;
     width: 100%;
     height: auto;
-    padding: 0.5rem;
+    padding: 0.3rem 0.5rem;
     color: #36393B;
     font-size: 1.4rem;
     background-color: #F7F0FD;
-}
-
-.task-time-container {
-    display: flex;
-    border: 1px solid skyblue;
 }
 
 .button-container {
@@ -114,11 +117,11 @@ h1 {
 }
 
 .complete-button, .delete-button {
-    padding: 0.3rem;
+    padding: 0.1rem 0.4rem;
     color: #36393B;
     border: thin #36393B solid;
     border-radius: 0.2rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .complete-button {
@@ -128,18 +131,17 @@ h1 {
 
 .delete-button {
     cursor: pointer;
-    margin-right: 0.3rem;
     background-color: #ffa99c;
-    /* background-color:#E5F4E3; */
 }
 
 .complete-button:hover {
-    background-color: #54B8B8;
+    color: white;
+    background-color: #54B8B8
 }
 
 .delete-button:hover {
+    color: white;
     background-color: #f58c7c;
-    /* background-color: #CBE4C8; */
 }
 
 .completed-task {

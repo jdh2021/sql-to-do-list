@@ -63,7 +63,7 @@ function getTask() {
                         </div>
                         <div class="button-container">
                             <button class="complete-button" data-id="${task.id}">
-                                <i class="fas fa-solid fa-calendar-check"></i></i>
+                                <i class="fas fa-solid fa-calendar-check"></i>
                             </button>
                             <button class="delete-button" data-id="${task.id}">
                                 <i class="fas fa-solid fa-calendar-minus"></i>

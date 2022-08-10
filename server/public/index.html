@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js"></script>
+     <!--Sourcing in Bootstrap 5-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="scripts/client.js"></script>
     <!--Sourcing in Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,27 +21,16 @@
                 <h1>To-Do List</h1>
             </header>
         </div>
-    <!-- <form> -->
-        <div id="input-container">
-            <input type="text" id="task-input" placeholder="do it!">
-            <button id="task-button">
+        <div id="input-container" class="input-group">
+            <input type="text" class="form-control" id="task-input" placeholder="do it!">
+            <button class="btn btn-primary" id="task-button">
                 <i class="fas fa-solid fa-pen-to-square"></i>
             </button>
         </div>
-    <!-- </form> -->
     </div>
     <div id="task-container">
         <div id="task-list">
             <div class="task-item">
-                <span class="task-to-complete">Task</span>
-                <div class="button-container">
-                    <button class="complete-button">
-                        <i class="fas fa-solid fa-calendar-check"></i></i>
-                    </button>
-                    <button class="delete-button">
-                        <i class="fas fa-solid fa-calendar-minus"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
