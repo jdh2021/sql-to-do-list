@@ -13,7 +13,7 @@ function readyNow() {
 const taskToPost = {};
 
 function addTask() {
-    let now = new Date();
+    const now = new Date();
     let currentTime = String(now.getHours()).padStart(2,0) + ':' + String(now.getMinutes()).padStart(2, 0);
     console.log(currentTime);
     console.log('in addTask');
@@ -52,12 +52,14 @@ function getTask() {
         console.log('Response from server is:', response);
         $('#task-list').empty();
         for (let task of response) {
+            const taskTime = new Date(`01/01/1970 ${task.time}`);
+            let formattedTaskTime = taskTime.toLocaleString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit'}).toLowerCase();
             if (task.completed === true) {
                 $('#task-list').append(`
                     <div class="task-item completed-task">
                         <div class="task-time">
                             <span class="task-to-complete fade-strike">${task.description}</span>
-                            <span class="time-placeholder">${task.time}</span>
+                            <span class="time-placeholder">Done: ${formattedTaskTime}</span>
                         </div>
                         <div class="button-container">
                             <button class="complete-button" data-id="${task.id}">
