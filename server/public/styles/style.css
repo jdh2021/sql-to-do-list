@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +16,7 @@ h1 {
 }
 
 #header-input-container {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 100%;
     margin: auto;
     display: flex;
@@ -33,12 +31,12 @@ h1 {
 }
 
 #header-container {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     width: 75%;
 }
 
 #input-container {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -53,12 +51,12 @@ h1 {
     padding: 0.15rem 0.5rem;
     font-family: 'Caveat', cursive;
     background-color: #F7F0FD;
-    border: thin solid #36393B;
+    /* border: thin solid #36393B; */
 }
 
 #task-input:focus {
     outline: none;
-    border: thin solid #36393B;
+    border: thin solid #9d8eae;
     box-shadow: 0 0 0.4rem #9d8eae;
 }
 
@@ -67,7 +65,7 @@ h1 {
     background-color: #E8BB20;
     font-size: 1.25rem;
     padding: 0 0.5rem;
-    border: thin solid #36393B;
+    border: thin solid #deb41e;
 }
 
 #task-button:focus {
@@ -77,16 +75,18 @@ h1 {
 #task-button:hover {
     cursor: pointer;
     color: white;
-    background-color: #d6a401;
+    background-color: #deb41e;
+    /* box-shadow: 0 0 0.4rem #9d8eae; */
 }
 
 #task-list {
-    margin: auto;
     width: 75%;
     background-color: #F7F0FD;
-    border: thin solid #36393B;
-    border-radius: 0.2rem;
+    /* border: thin solid #36393B; */
+    border-radius: 0.25rem;
     min-height: 3rem;
+    padding: 0.4rem;
+    box-shadow: 0 0 0.4rem #9d8eae;
 }
 
 #task-container {
@@ -100,7 +100,7 @@ h1 {
 }
 
 .task-item {
-    border: 1px solid lawngreen;
+    /* border: 1px solid lawngreen; */
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -112,26 +112,33 @@ h1 {
 }
 
 .button-container {
+    /* border: 1px solid fuchsia; */
     display: flex;
-    border: 1px solid fuchsia;
+    
 }
 
 .complete-button, .delete-button {
-    padding: 0.1rem 0.4rem;
+    padding: 0.1rem 0.45rem;
     color: #36393B;
     border: thin #36393B solid;
-    border-radius: 0.2rem;
+    /* border-top-radius: 0.2rem; */
     font-size: 1.1rem;
 }
 
 .complete-button {
     cursor: pointer;
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
     background-color: #61CECE;
+    border: thin solid #54B8B8;
 }
 
 .delete-button {
     cursor: pointer;
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
     background-color: #ffa99c;
+    border: thin solid #f58c7c;
 }
 
 .complete-button:hover {
@@ -145,7 +152,9 @@ h1 {
 }
 
 .completed-task {
+    border-radius: 0.4rem;
     background-color: #FFEAA0;
+    border: thin solid #fde58f;
     transition: 0.5s;
 }
 
@@ -174,3 +183,4 @@ h1 {
     background-color:  #61CECE !important;
     border: think solid #54B8B8;
 }
+
