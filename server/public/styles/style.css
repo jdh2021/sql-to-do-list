@@ -136,7 +136,7 @@ h1 {
 
 .complete-button:hover {
     color: white;
-    background-color: #54B8B8
+    background-color: #54B8B8;
 }
 
 .delete-button:hover {
@@ -154,4 +154,23 @@ h1 {
     text-decoration-thickness: 0.06rem;
     opacity: 0.4;
     transition: 0.5s;
+}
+
+.swal-text {
+    font-size: 1.3rem;
+    color: #36393B;
+}
+
+.swal-button--confirm {
+    font-size: 1.1rem;
+    color: #36393B;
+    background-color: #FFA99C !important;
+    border: thin solid #F58C7C;
+}
+
+.swal-button--cancel {
+    font-size: 1.1rem;
+    color: #36393B;
+    background-color:  #61CECE !important;
+    border: think solid #54B8B8;
 }

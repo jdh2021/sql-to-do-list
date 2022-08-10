@@ -18,7 +18,12 @@ function addTask() {
     console.log(currentTime);
     console.log('in addTask');
     if ($('#task-input').val() === '') {
-        alert('You haven\'t entered a task!');
+        swal({
+            text: "Please enter a task!",
+            icon: "warning",
+            button: true,
+        });
+        // alert('You haven\'t entered a task!');
         return false;
     } else {
         taskToPost.description = $('#task-input').val();
@@ -115,15 +120,31 @@ function deleteTask () {
     console.log('in deleteTask');
     const taskToDeleteId = $(this).data('id');
     console.log(taskToDeleteId);
-    $.ajax({
-        method: 'DELETE',
-        url: `/tasks/${taskToDeleteId}`
-    }).then(function(response) {
-        console.log('Response from server is:', response);
-        getTask();
+    swal({
+        text: "Are you sure you want to remove this?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                method: 'DELETE',
+                url: `/tasks/${taskToDeleteId}`
+            }).then(function(response) {
+                console.log('Response from server is:', response);
+                getTask();
+            }).catch(function(error) {
+                console.log('Error:', error);
+                alert('There\'s an error.');
+            });
+            swal("Success: Task deleted!", {
+                icon: "success",
+            });
+        } 
     }).catch(function(error) {
         console.log('Error:', error);
-        alert('There\'s an error.');
+        alert('There\'s an error');
     });
 }
 
