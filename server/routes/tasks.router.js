@@ -8,11 +8,19 @@ const pool = require('../modules/pool.js');
 let taskToPost = '';
 
 router.post('/', (req, res) => {
-    console.log('in router POST');
+    console.log('in POST /tasks');
     taskToPost = req.body;
-    taskArray.push(taskToPost);
-    console.log(taskArray);
-    res.sendStatus(201);
+    console.log(taskToPost);
+    const queryText = `INSERT INTO "todo" ("description", "completed")
+                        VALUES ($1, $2);`
+    pool.query(queryText, [taskToPost.description, taskToPost.completed])
+        .then((results) => {
+            console.log(results);
+            res.send(results);
+        }).catch((error) => {
+            console.log('Error in POST /tasks', error);
+            res.sendStatus(500);
+        });
 });
 
 router.get('/', (req, res) => {
@@ -28,6 +36,14 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });
+
+// router.post('/', (req, res) => {
+//     console.log('in router POST');
+//     taskToPost = req.body;
+//     taskArray.push(taskToPost);
+//     console.log(taskArray);
+//     res.sendStatus(201);
+// });
 
 // router.get('/', (req, res) => {
 //     console.log('in router GET');

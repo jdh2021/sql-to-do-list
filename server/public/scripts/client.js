@@ -19,6 +19,7 @@ function addTask() {
         return false;
     } else {
         taskToPost.description = $('#task-input').val();
+        taskToPost.completed = false;
         console.log(taskToPost);
         postTask();
         $('#task-input').val('');
