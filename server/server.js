@@ -1,6 +1,6 @@
 // require express, gives a function
 const express = require('express');
-const moment = require('moment');
+// const moment = require('moment');
 
 // create an instance of express by calling the function, gives an object
 const app = express();

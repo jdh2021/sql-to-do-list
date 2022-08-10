@@ -13,6 +13,9 @@ function readyNow() {
 const taskToPost = {};
 
 function addTask() {
+    let now = new Date();
+    let currentTime = String(now.getHours()).padStart(2,0) + ':' + String(now.getMinutes()).padStart(2, 0);
+    console.log(currentTime);
     console.log('in addTask');
     if ($('#task-input').val() === '') {
         alert('You haven\'t entered a task!');
@@ -20,6 +23,7 @@ function addTask() {
     } else {
         taskToPost.description = $('#task-input').val();
         taskToPost.completed = false;
+        taskToPost.time = currentTime;
         console.log(taskToPost);
         postTask();
         $('#task-input').val('');
@@ -48,21 +52,40 @@ function getTask() {
         console.log('Response from server is:', response);
         $('#task-list').empty();
         for (let task of response) {
-            $('#task-list').append(`
-                <div class="task-item">
-                    <div class="task-time">
-                        <span class="task-to-complete">${task.description}</span>
+            if (task.completed === true) {
+                $('#task-list').append(`
+                    <div class="task-item completed-task">
+                        <div class="task-time">
+                            <span class="task-to-complete fade-strike">${task.description}</span>
+                            <span class="time-placeholder">${task.time}</span>
+                        </div>
+                        <div class="button-container">
+                            <button class="complete-button" data-id="${task.id}">
+                                <i class="fas fa-solid fa-calendar-check"></i></i>
+                            </button>
+                            <button class="delete-button" data-id="${task.id}">
+                                <i class="fas fa-solid fa-calendar-minus"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="button-container">
-                        <button class="complete-button">
-                            <i class="fas fa-solid fa-calendar-check"></i></i>
-                        </button>
-                        <button class="delete-button" data-id="${task.id}">
-                            <i class="fas fa-solid fa-calendar-minus"></i>
-                        </button>
+                `);
+            } else {
+                $('#task-list').append(`
+                    <div class="task-item">
+                        <div class="task-time">
+                            <span class="task-to-complete">${task.description}</span>
+                        </div>
+                        <div class="button-container">
+                            <button class="complete-button" data-id="${task.id}">
+                                <i class="fas fa-solid fa-calendar-check"></i></i>
+                            </button>
+                            <button class="delete-button" data-id="${task.id}">
+                                <i class="fas fa-solid fa-calendar-minus"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            `);
+                `);
+            }
         }
     }).catch(function(error) {
         console.log('Error:', error);
@@ -70,27 +93,22 @@ function getTask() {
     });
 }
 
+//update time and completed status to true then getTask()
 function completeTask () {
     console.log('in completeTask');
-    $(this).parent().parent().toggleClass('completed-task');
-    $(this).parent().parent().children('.task-time').children('.task-to-complete').toggleClass('fade-strike');
-    if($(this).parent().parent().children('.task-time').children().hasClass('time-placeholder')) {
-        $(this).parent().parent().children('.task-time').children('.time-placeholder').remove();
-    } else { 
-        $(this).parent().parent().children('.task-time').append(`<span class="time-placeholder">Done: 0:00 a.m.</span>`);
-        // $.ajax({
-        //     method: 'GET',
-        //     url: '/tasks'
-        // }).then(function(response) {
-        // console.log('Response from server is:', response);
-        //     for(let task of response) {
-        //         console.log(task);
-                
-        //     }
-        // })
-    }
+    const taskToUpdateId = $(this).data('id');
+    console.log(taskToUpdateId);
+    // $.ajax({
+    //     method: 'UPDATE',
+    //     url: `/tasks/${taskToUpdateId}`
+    // }).then(function(response) {
+    //     console.log('Response from server is:', response);
+    // }).catch(function(error) {
+    //     console.log('Error:', error);
+    //     alert('There\'s an error');
+    // });
 }
-
+    
 function deleteTask () {
     console.log('in deleteTask');
     const taskToDeleteId = $(this).data('id');
@@ -105,6 +123,14 @@ function deleteTask () {
         console.log('Error:', error);
         alert('There\'s an error.');
     });
-    // $(this).parent().parent().remove();
 }
 
+// console.log('in completeTask');
+//     const taskToUpdateId = $(this).data('id');
+//     console.log(taskToUpdateId);
+//     $(this).parent().parent().toggleClass('completed-task');
+//     $(this).parent().parent().children('.task-time').children('.task-to-complete').toggleClass('fade-strike');
+//     if($(this).parent().parent().children('.task-time').children().hasClass('time-placeholder')) {
+//         $(this).parent().parent().children('.task-time').children('.time-placeholder').remove();
+//     } else { 
+//         $(this).parent().parent().children('.task-time').append(`<span class="time-placeholder">Done: 0:00 a.m.</span>`);

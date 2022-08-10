@@ -9,9 +9,9 @@ router.post('/', (req, res) => {
     console.log('in POST /tasks');
     taskToPost = req.body;
     console.log(taskToPost);
-    const queryText = `INSERT INTO "todo" ("description", "completed")
-                        VALUES ($1, $2);`
-    pool.query(queryText, [taskToPost.description, taskToPost.completed])
+    const queryText = `INSERT INTO "todo" ("description", "completed", "time")
+                        VALUES ($1, $2, $3);`
+    pool.query(queryText, [taskToPost.description, taskToPost.completed, taskToPost.time])
         .then((results) => {
             console.log(results);
             res.send(results);
@@ -23,8 +23,8 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     console.log('in GET /tasks');
-    taskToPost.timeClicked = moment().format('LT'); //testing moment.js for time task added
-    console.log(taskToPost.timeClicked);
+    // taskToPost.timeClicked = moment().format('LT'); //testing moment.js for time task added
+    // console.log(taskToPost.timeClicked);
     const queryText = 'SELECT * from "todo"';
     pool.query(queryText).then((result) => {
         console.log('SELECT result is:', result);
