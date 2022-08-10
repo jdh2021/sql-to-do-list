@@ -2,17 +2,17 @@
 
 CREATE TABLE "todo" (
 	"id" serial primary key,
-	"task" varchar(240),
+	"description" varchar(240),
 	"completed" boolean);
 
-INSERT INTO "todo" ("task", "completed")
+INSERT INTO "todo" ("description", "completed")
 VALUES ('walk dogs', false);
 
-INSERT INTO "todo" ("task", "completed")
+INSERT INTO "todo" ("description", "completed")
 VALUES 	('fold laundry', true),
 		('wash dishes', false),
 		('do homework', false);
 		
-DELETE FROM "todo" WHERE "task" = 'wash dishes';
+DELETE FROM "todo" WHERE "description" = 'wash dishes';
 
-UPDATE "todo" SET "completed" = true WHERE "task" = 'do homework';
+UPDATE "todo" SET "completed" = true WHERE "description" = 'do homework';

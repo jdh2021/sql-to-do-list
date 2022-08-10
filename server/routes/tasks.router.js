@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
+const pool = require('../modules/pool.js');
 
-const taskArray = [];
+// const taskArray = [];
 
 let taskToPost = '';
 
@@ -15,10 +16,24 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    console.log('in router GET');
+    console.log('in GET /tasks');
     taskToPost.timeClicked = moment().format('LT'); //testing moment.js for time task added
     console.log(taskToPost.timeClicked);
-    res.send(taskArray);
+    const queryText = 'SELECT * from "todo"';
+    pool.query(queryText).then((result) => {
+        console.log('SELECT result is:', result);
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('Error in GET /artist', error);
+        res.sendStatus(500);
+    });
 });
+
+// router.get('/', (req, res) => {
+//     console.log('in router GET');
+//     taskToPost.timeClicked = moment().format('LT'); //testing moment.js for time task added
+//     console.log(taskToPost.timeClicked);
+//     res.send(taskArray);
+// });
 
 module.exports = router;
