@@ -86,7 +86,7 @@ h1 {
     border-radius: 0.25rem;
     min-height: 3rem;
     padding: 0.4rem;
-    box-shadow: 0 0 0.4rem #9d8eae;
+    box-shadow: 0 0 0.5rem #9d8eae;
 }
 
 #task-container {
@@ -109,6 +109,9 @@ h1 {
     color: #36393B;
     font-size: 1.4rem;
     background-color: #F7F0FD;
+    border-radius: 0.4rem;
+    background-color: #FFEAA0;
+    border: thin solid #fde58f;
 }
 
 .button-container {
@@ -117,11 +120,10 @@ h1 {
     
 }
 
-.complete-button, .delete-button {
+.complete-button, .delete-button, .disabled-button {
     padding: 0.1rem 0.45rem;
     color: #36393B;
     border: thin #36393B solid;
-    /* border-top-radius: 0.2rem; */
     font-size: 1.1rem;
 }
 
@@ -151,18 +153,27 @@ h1 {
     background-color: #f58c7c;
 }
 
+.disabled-button {
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    background-color: #61CECE;
+    border: thin solid #54B8B8;
+    opacity: 0.4;
+}
+
 .completed-task {
-    border-radius: 0.4rem;
-    background-color: #FFEAA0;
-    border: thin solid #fde58f;
-    transition: 0.5s;
+    border: none;
+    background-color: #F7F0FD;
 }
 
 .fade-strike {
     text-decoration: line-through;
     text-decoration-thickness: 0.06rem;
-    opacity: 0.4;
-    transition: 0.5s;
+    opacity: 0.5;
+}
+
+.time-placeholder {
+    opacity: 0.5;
 }
 
 .swal-text {

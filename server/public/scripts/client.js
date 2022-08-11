@@ -23,7 +23,10 @@ function addTask() {
         return false;
     } else {
         const now = new Date();
-        let timeTaskAdded = String(now.getHours()).padStart(2,0) + ':' + 
+        let timeTaskAdded = String(now.getFullYear()) + '-' + 
+                            String(now.getMonth()+1).padStart(2,0) + '-' + 
+                            String(now.getDate()).padStart(2,0) + ' ' + 
+                            String(now.getHours()).padStart(2,0) + ':' + 
                             String(now.getMinutes()).padStart(2, 0) + ':' + 
                             String(now.getSeconds()).padStart(2, 0);
         console.log(timeTaskAdded);
@@ -32,7 +35,6 @@ function addTask() {
         taskToPost.time_added = timeTaskAdded;
         console.log(taskToPost);
         postTask();
-        $('#task-input').val('');
     }
 }
 
@@ -43,6 +45,7 @@ function postTask() {
         data: taskToPost,
     }).then(function(response) {
         console.log('Back from POST:', response);
+        $('#task-input').val('');
         getTask();
     }).catch(function(error) {
         console.log('Error:', error);
@@ -63,16 +66,17 @@ function getTask() {
         $('#task-list').empty();
         for (let task of response) {
             if (task.completed === true) {
-                const taskTime = new Date(`01/01/1970 ${task.time_completed}`);
-                let formattedTaskTime = taskTime.toLocaleString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit'}).toLowerCase();
+                const timeTaskCompleted= new Date(`${task.time_completed}`)
+                                        .toLocaleString('en-US', { hour12: true, hour: 'numeric', minute: '2-digit'})
+                                        .toLowerCase();
                 $('#task-list').append(`
                     <div class="task-item completed-task">
-                        <div class="task-time">
+                        <div class="description-time">
                             <span class="task-to-complete fade-strike">${task.description}</span>
-                            <span class="time-placeholder">Done: ${formattedTaskTime}</span>
+                            <span class="time-placeholder">${timeTaskCompleted}</span>
                         </div>
                         <div class="button-container">
-                            <button class="complete-button" data-id="${task.id}">
+                            <button class="disabled-button" disabled>
                                 <i class="fas fa-solid fa-calendar-check"></i>
                             </button>
                             <button class="delete-button" data-id="${task.id}">
@@ -83,8 +87,8 @@ function getTask() {
                 `);
             } else {
                 $('#task-list').append(`
-                    <div class="task-item">
-                        <div class="task-time">
+                    <div class="task-item uncompleted-task">
+                        <div class="description-time">
                             <span class="task-to-complete">${task.description}</span>
                         </div>
                         <div class="button-container">
@@ -114,7 +118,10 @@ function completeTask () {
     console.log('in completeTask');
     const taskToUpdateId = $(this).data('id');
     const now = new Date();
-    let timeTaskCompleted = String(now.getHours()).padStart(2,0) + ':' + 
+    let timeTaskCompleted = String(now.getFullYear()) + '-' + 
+                            String(now.getMonth()+1).padStart(2,0) + '-' + 
+                            String(now.getDate()).padStart(2,0) + ' ' + 
+                            String(now.getHours()).padStart(2,0) + ':' + 
                             String(now.getMinutes()).padStart(2, 0) + ':' + 
                             String(now.getSeconds()).padStart(2, 0);
     taskToPost.time_completed = timeTaskCompleted;

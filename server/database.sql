@@ -4,13 +4,9 @@ CREATE TABLE "todo" (
 	"id" serial primary key,
 	"description" varchar(240) not null unique,
 	"completed" boolean not null,
-	"time_added" time not null,
-	"time_completed" time);
+	"time_added" timestamp with time zone not null,
+	"time_completed" timestamp with time zone);
 
 INSERT INTO "todo" ("description", "completed", "time_added", "time_completed")
-VALUES ('walk dogs', false, '08:15', '12:15');
-
-INSERT INTO "todo" ("description", "completed", "time_added", "time_completed")
-VALUES 	('fold laundry', true, '12:00', '12:35'),
-		('wash dishes', false, '12:45', '12:52'),
-		('do homework', false, '14:15', '18:52');
+VALUES 	('fold laundry', false, '2022-08-11 11:22:40', null),
+		('wash dishes', true, '2022-08-11 11:25:40', '2022-08-11 13:25:40');

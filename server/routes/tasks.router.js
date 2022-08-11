@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
     const queryText = 'SELECT * from "todo" ORDER BY "time_added" ASC';
     pool.query(queryText)
         .then((result) => {
-            // console.log('SELECT result is:', result);
             res.send(result.rows);
         }).catch((error) => {
             console.log('Error in GET /artist', error);
