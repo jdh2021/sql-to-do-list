@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     console.log('in GET /tasks');
-    const queryText = 'SELECT * from "todo" ORDER BY "time_added" ASC';
+    const queryText = 'SELECT * from "todo" ORDER BY "completed" ASC, "time_completed" ASC, "time_added" ASC;';
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
