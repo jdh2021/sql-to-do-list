@@ -13,11 +13,6 @@ function readyNow() {
 const taskToPost = {};
 
 function addTask() {
-    const now = new Date();
-    let timeTaskAdded = String(now.getHours()).padStart(2,0) + ':' + 
-                        String(now.getMinutes()).padStart(2, 0) + ':' + 
-                        String(now.getSeconds()).padStart(2, 0);
-    console.log(timeTaskAdded);
     console.log('in addTask');
     if ($('#task-input').val() === '') {
         swal({
@@ -27,6 +22,11 @@ function addTask() {
         });
         return false;
     } else {
+        const now = new Date();
+        let timeTaskAdded = String(now.getHours()).padStart(2,0) + ':' + 
+                            String(now.getMinutes()).padStart(2, 0) + ':' + 
+                            String(now.getSeconds()).padStart(2, 0);
+        console.log(timeTaskAdded);
         taskToPost.description = $('#task-input').val();
         taskToPost.completed = false;
         taskToPost.time_added = timeTaskAdded;
@@ -46,7 +46,11 @@ function postTask() {
         getTask();
     }).catch(function(error) {
         console.log('Error:', error);
-        alert('There\'s an error.');
+        swal({
+            text: "There's an error!",
+            icon: "warning",
+            button: true,
+        });
     });
 }
 
@@ -58,9 +62,9 @@ function getTask() {
         console.log('Response from server is:', response);
         $('#task-list').empty();
         for (let task of response) {
-            const taskTime = new Date(`01/01/1970 ${task.time_added}`);
-            let formattedTaskTime = taskTime.toLocaleString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit'}).toLowerCase();
             if (task.completed === true) {
+                const taskTime = new Date(`01/01/1970 ${task.time_completed}`);
+                let formattedTaskTime = taskTime.toLocaleString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit'}).toLowerCase();
                 $('#task-list').append(`
                     <div class="task-item completed-task">
                         <div class="task-time">
@@ -97,7 +101,11 @@ function getTask() {
         }
     }).catch(function(error) {
         console.log('Error:', error);
-        alert('There\'s an error.');
+        swal({
+            text: "There's an error!",
+            icon: "warning",
+            button: true,
+        });
     });
 }
 
@@ -105,29 +113,34 @@ function getTask() {
 function completeTask () {
     console.log('in completeTask');
     const taskToUpdateId = $(this).data('id');
-    console.log(taskToUpdateId);
-    // const now = new Date();
-    // let timeTaskCompleted = String(now.getHours()).padStart(2,0) + ':' + 
-    //                         String(now.getMinutes()).padStart(2, 0) + ':' + 
-    //                         String(now.getSeconds()).padStart(2, 0);
-    // taskToPost.time_completed = timeTaskCompleted;
-    // console.log('Time task was completed:', timeTaskCompleted);
+    const now = new Date();
+    let timeTaskCompleted = String(now.getHours()).padStart(2,0) + ':' + 
+                            String(now.getMinutes()).padStart(2, 0) + ':' + 
+                            String(now.getSeconds()).padStart(2, 0);
+    taskToPost.time_completed = timeTaskCompleted;
+    console.log('Time task was completed:', timeTaskCompleted);
+    console.log(taskToPost);
     $.ajax({
         method: 'PUT',
-        url: `/tasks/${taskToUpdateId}`
+        url: `/tasks/${taskToUpdateId}`,
+        data: taskToPost,
     }).then(function(response) {
         console.log('Response from server is:', response);
         getTask();
+        delete taskToPost.time_completed;
     }).catch(function(error) {
         console.log('Error:', error);
-        alert('There\'s an error');
+        swal({
+            text: "There's an error!",
+            icon: "warning",
+            button: true,
+        });
     });
 }
     
 function deleteTask () {
     console.log('in deleteTask');
     const taskToDeleteId = $(this).data('id');
-    console.log(taskToDeleteId);
     swal({
         text: "Are you sure you want to remove this?",
         icon: "warning",
@@ -152,16 +165,11 @@ function deleteTask () {
         } 
     }).catch(function(error) {
         console.log('Error:', error);
-        alert('There\'s an error');
+        swal({
+            text: "There's an error!",
+            icon: "warning",
+            button: true,
+        });
     });
 }
 
-// console.log('in completeTask');
-//     const taskToUpdateId = $(this).data('id');
-//     console.log(taskToUpdateId);
-//     $(this).parent().parent().toggleClass('completed-task');
-//     $(this).parent().parent().children('.task-time').children('.task-to-complete').toggleClass('fade-strike');
-//     if($(this).parent().parent().children('.task-time').children().hasClass('time-placeholder')) {
-//         $(this).parent().parent().children('.task-time').children('.time-placeholder').remove();
-//     } else { 
-//         $(this).parent().parent().children('.task-time').append(`<span class="time-placeholder">Done: 0:00 a.m.</span>`);
