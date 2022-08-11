@@ -16,7 +16,7 @@ h1 {
 }
 
 #header-input-container {
-    /* border: 1px solid blue; */
+    border: 1px solid blue;
     width: 100%;
     margin: auto;
     display: flex;
@@ -31,12 +31,12 @@ h1 {
 }
 
 #header-container {
-    /* border: 1px solid green; */
+    border: 1px solid green;
     width: 75%;
 }
 
 #input-container {
-    /* border: 1px solid yellow; */
+    border: 1px solid yellow;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -76,13 +76,12 @@ h1 {
     cursor: pointer;
     color: white;
     background-color: #deb41e;
-    /* box-shadow: 0 0 0.4rem #9d8eae; */
 }
 
 #task-list {
+    border: 1px solid yellow;
     width: 75%;
     background-color: #F7F0FD;
-    /* border: thin solid #36393B; */
     border-radius: 0.25rem;
     min-height: 3rem;
     padding: 0.4rem;
@@ -115,7 +114,7 @@ h1 {
 }
 
 .button-container {
-    /* border: 1px solid fuchsia; */
+    border: 1px solid fuchsia;
     display: flex;
     
 }
@@ -195,3 +194,57 @@ h1 {
     border: think solid #54B8B8;
 }
 
+
+@media (max-width: 575.98px) { 
+    #header-container, #input-container {
+        width: 70%;
+    }
+    #task-list {
+        width: 90%;
+    }
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    #header-container, #input-container {
+        width: 60%;
+    }
+    #task-list {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    #header-container {
+        width: 100%;
+    }
+    #input-container {
+        width: 50%;
+    }
+    #task-list {
+        width: 70%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    #header-container {
+        width: 100%;
+    }
+    #input-container {
+        width: 35%;
+    }
+    #task-list {
+        width: 55%;
+    }
+ }
+
+@media (min-width: 1200px) { 
+    #header-container {
+        width: 100%;
+    }
+    #input-container {
+        width: 25%;
+    }
+    #task-list {
+        width: 45%;
+    }
+ }
