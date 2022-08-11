@@ -105,15 +105,16 @@ function completeTask () {
     console.log('in completeTask');
     const taskToUpdateId = $(this).data('id');
     console.log(taskToUpdateId);
-    // $.ajax({
-    //     method: 'UPDATE',
-    //     url: `/tasks/${taskToUpdateId}`
-    // }).then(function(response) {
-    //     console.log('Response from server is:', response);
-    // }).catch(function(error) {
-    //     console.log('Error:', error);
-    //     alert('There\'s an error');
-    // });
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/${taskToUpdateId}`
+    }).then(function(response) {
+        console.log('Response from server is:', response);
+        getTask();
+    }).catch(function(error) {
+        console.log('Error:', error);
+        alert('There\'s an error');
+    });
 }
     
 function deleteTask () {

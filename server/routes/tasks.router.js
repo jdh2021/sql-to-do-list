@@ -1,6 +1,6 @@
 const express = require('express');
+const { Pool } = require('pg');
 const router = express.Router();
-// const moment = require('moment');
 const pool = require('../modules/pool.js');
 
 let taskToPost = '';
@@ -43,9 +43,22 @@ router.delete('/:id', (req, res) => {
     }).catch((error) => {
         console.log('Error in DELETE /tasks');
         res.sendStatus(500);
-    })
-})
-// const taskArray = [];
+    });
+});
+
+router.put('/:id', (req, res) => {
+    console.log('in PUT /task');
+    const taskId = req.params.id;
+    console.log(req.body);
+    const queryText = `UPDATE "todo" SET "completed" = 'true'
+                        WHERE "id" = $1;`;
+    pool.query(queryText, [taskId])
+        .then((results) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
+});
 
 // router.post('/', (req, res) => {
 //     console.log('in router POST');
