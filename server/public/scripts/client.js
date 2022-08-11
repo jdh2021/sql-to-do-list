@@ -14,8 +14,10 @@ const taskToPost = {};
 
 function addTask() {
     const now = new Date();
-    let currentTime = String(now.getHours()).padStart(2,0) + ':' + String(now.getMinutes()).padStart(2, 0);
-    console.log(currentTime);
+    let timeTaskAdded = String(now.getHours()).padStart(2,0) + ':' + 
+                        String(now.getMinutes()).padStart(2, 0) + ':' + 
+                        String(now.getSeconds()).padStart(2, 0);
+    console.log(timeTaskAdded);
     console.log('in addTask');
     if ($('#task-input').val() === '') {
         swal({
@@ -23,12 +25,11 @@ function addTask() {
             icon: "warning",
             button: true,
         });
-        // alert('You haven\'t entered a task!');
         return false;
     } else {
         taskToPost.description = $('#task-input').val();
         taskToPost.completed = false;
-        taskToPost.time = currentTime;
+        taskToPost.time_added = timeTaskAdded;
         console.log(taskToPost);
         postTask();
         $('#task-input').val('');
@@ -57,7 +58,7 @@ function getTask() {
         console.log('Response from server is:', response);
         $('#task-list').empty();
         for (let task of response) {
-            const taskTime = new Date(`01/01/1970 ${task.time}`);
+            const taskTime = new Date(`01/01/1970 ${task.time_added}`);
             let formattedTaskTime = taskTime.toLocaleString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit'}).toLowerCase();
             if (task.completed === true) {
                 $('#task-list').append(`
@@ -105,6 +106,12 @@ function completeTask () {
     console.log('in completeTask');
     const taskToUpdateId = $(this).data('id');
     console.log(taskToUpdateId);
+    // const now = new Date();
+    // let timeTaskCompleted = String(now.getHours()).padStart(2,0) + ':' + 
+    //                         String(now.getMinutes()).padStart(2, 0) + ':' + 
+    //                         String(now.getSeconds()).padStart(2, 0);
+    // taskToPost.time_completed = timeTaskCompleted;
+    // console.log('Time task was completed:', timeTaskCompleted);
     $.ajax({
         method: 'PUT',
         url: `/tasks/${taskToUpdateId}`

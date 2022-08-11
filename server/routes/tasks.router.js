@@ -9,9 +9,9 @@ router.post('/', (req, res) => {
     console.log('in POST /tasks');
     taskToPost = req.body;
     console.log(taskToPost);
-    const queryText = `INSERT INTO "todo" ("description", "completed", "time")
-                        VALUES ($1, $2, $3);`
-    pool.query(queryText, [taskToPost.description, taskToPost.completed, taskToPost.time])
+    const queryText = `INSERT INTO "todo" ("description", "completed", "time_added", "time_completed")
+                        VALUES ($1, $2, $3, $4);`
+    pool.query(queryText, [taskToPost.description, taskToPost.completed, taskToPost.time_added, taskToPost.time_completed])
         .then((results) => {
             console.log(results);
             res.send(results);
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     console.log('in GET /tasks');
     // taskToPost.timeClicked = moment().format('LT'); //testing moment.js for time task added
     // console.log(taskToPost.timeClicked);
-    const queryText = 'SELECT * from "todo"';
+    const queryText = 'SELECT * from "todo" ORDER BY "time_added" ASC';
     pool.query(queryText).then((result) => {
         console.log('SELECT result is:', result);
         res.send(result.rows);
@@ -50,6 +50,7 @@ router.put('/:id', (req, res) => {
     console.log('in PUT /task');
     const taskId = req.params.id;
     console.log(req.body);
+    console.log(taskId);
     const queryText = `UPDATE "todo" SET "completed" = 'true'
                         WHERE "id" = $1;`;
     pool.query(queryText, [taskId])
