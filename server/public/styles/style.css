@@ -16,7 +16,7 @@ h1 {
 }
 
 #header-input-container {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 100%;
     margin: auto;
     display: flex;
@@ -25,23 +25,17 @@ h1 {
 }
 
 #header-container {
+    /* border: 1px solid green; */
     text-align: center;
-    width: 85%;
-    margin-top: 0.5rem;
-}
-
-#header-container {
-    border: 1px solid green;
-    width: 75%;
+    margin-top: 1rem;
 }
 
 #input-container {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     text-align: center;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 60%;
     margin: auto;
 }
 
@@ -51,7 +45,6 @@ h1 {
     padding: 0.05rem 0.5rem;
     font-family: 'Caveat', cursive;
     background-color: #F7F0FD;
-    /* border: thin solid #36393B; */
 }
 
 #task-input:focus {
@@ -79,17 +72,17 @@ h1 {
 }
 
 #task-list {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     width: 75%;
     background-color: #F7F0FD;
     border-radius: 0.25rem;
     min-height: 3rem;
     padding: 0.4rem;
-    box-shadow: 0 0 0.5rem #9d8eae;
+    box-shadow: 0 0 0.6rem #9d8eae;
 }
 
 #task-container {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     margin: auto;
     display: flex;
@@ -114,7 +107,7 @@ h1 {
 }
 
 .button-container {
-    border: 1px solid fuchsia;
+    /* border: 1px solid fuchsia; */
     display: flex;
     
 }

@@ -63,7 +63,6 @@ function getTask() {
         url: '/tasks'
     }).then(function(response) {
         console.log('Response from server is:', response);
-        $('#task-list').empty();
         displayTask(response);
     }).catch(function(error) {
         console.log('Error:', error);
@@ -76,6 +75,7 @@ function getTask() {
 }
 
 function displayTask(response) {
+    $('#task-list').empty();
     for (let task of response) {
         if (task.completed === true) {
             const timeTaskCompleted= new Date(`${task.time_completed}`)

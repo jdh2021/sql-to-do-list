@@ -26,12 +26,11 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 
 ## Usage
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. Enter a new task by typing its description in the `do it!` field and then clicking the gold pen button. The task will be added to the task list below with a yellow background. 
+2. If a task was entered by mistake or no longer needed, click the salmon minus button. An alert will ask for confirmation before deleting. Click `OK` to delete or `Cancel` to keep.
+3. Complete a task by clicking the teal circle button. Once clicked, the yellow background disappears. The teal button displays a checkmark and is disabled. The task descripton appears with a strike-through, and the time the task was completed is logged to the right. 
+4. Tasks appear in order of whether they are complete, with incomplete tasks appearing first. If incomplete, they appear in order of when they were added. If complete, they appear in order of when they were completed. 
+5. Tasks are stored in a database so the information entered is retained even when the server is restarted.
 
 ## Built With
 
