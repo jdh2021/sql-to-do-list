@@ -47,13 +47,15 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     console.log('in PUT /task');
     const taskId = req.params.id;
+    const taskCompleted = req.body.completed;
     const timeTaskCompleted = req.body.time_completed;
     console.log(taskId);
-    console.log(req.body.time_completed);
-    const queryText =  `UPDATE "todo" SET "time_completed" = $1, 
-                        "completed" = 'true' 
-                        WHERE "id" = $2;`;
-    pool.query(queryText, [timeTaskCompleted, taskId])
+    console.log(taskCompleted);
+    console.log(timeTaskCompleted);
+    const queryText =  `UPDATE "todo" SET "completed" = $1,
+                        "time_completed" = $2
+                        WHERE "id" = $3 ;`;
+    pool.query(queryText, [taskCompleted, timeTaskCompleted, taskId])
         .then((results) => {
             res.sendStatus(200);
         }).catch((error) => {

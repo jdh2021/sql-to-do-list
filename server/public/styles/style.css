@@ -76,9 +76,12 @@ h1 {
     width: 75%;
     background-color: #F7F0FD;
     border-radius: 0.25rem;
-    min-height: 3rem;
     padding: 0.4rem;
     box-shadow: 0 0 0.6rem #9d8eae;
+}
+
+#task-list:empty { 
+    display: none; 
 }
 
 #task-container {

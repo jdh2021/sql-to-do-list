@@ -88,7 +88,7 @@ function displayTask(response) {
                         <span class="time-placeholder">${timeTaskCompleted}</span>
                     </div>
                     <div class="button-container">
-                        <button class="disabled-button" disabled>
+                        <button class="complete-button" data-id="${task.id}">
                             <i class="fa-solid fa-circle-check"></i>
                         </button>
                         <button class="delete-button" data-id="${task.id}">
@@ -120,16 +120,29 @@ function displayTask(response) {
 function completeTask () {
     console.log('in completeTask');
     const taskToUpdateId = $(this).data('id');
-    const now = new Date();
-    let timeTaskCompleted = String(now.getFullYear()) + '-' + 
-                            String(now.getMonth()+1).padStart(2,0) + '-' + 
-                            String(now.getDate()).padStart(2,0) + ' ' + 
-                            String(now.getHours()).padStart(2,0) + ':' + 
-                            String(now.getMinutes()).padStart(2, 0) + ':' + 
-                            String(now.getSeconds()).padStart(2, 0);
-    taskToPost.time_completed = timeTaskCompleted;
-    console.log('Time task was completed:', timeTaskCompleted);
-    console.log(taskToPost);
+    if ($(this).parent().parent().hasClass('uncompleted-task')) {
+        taskToPost.completed = true;
+        const now = new Date();
+        let timeTaskCompleted = String(now.getFullYear()) + '-' + 
+                                String(now.getMonth()+1).padStart(2,0) + '-' + 
+                                String(now.getDate()).padStart(2,0) + ' ' + 
+                                String(now.getHours()).padStart(2,0) + ':' + 
+                                String(now.getMinutes()).padStart(2, 0) + ':' + 
+                                String(now.getSeconds()).padStart(2, 0);
+        taskToPost.time_completed = timeTaskCompleted;
+        console.log('Time task was completed:', timeTaskCompleted);
+        updateTask(taskToUpdateId);
+    } else if ($(this).parent().parent().hasClass('completed-task')) {
+        taskToPost.completed = false;
+        let emptyTime = taskToPost.empty_time;
+        taskToPost.time_completed = emptyTime;
+        console.log('Task marked incomplete.');
+        console.log(taskToPost);
+        updateTask(taskToUpdateId);
+    }
+}
+        
+function updateTask (taskToUpdateId) {
     $.ajax({
         method: 'PUT',
         url: `/tasks/${taskToUpdateId}`,
@@ -147,7 +160,7 @@ function completeTask () {
         });
     });
 }
-    
+
 function deleteTask () {
     console.log('in deleteTask');
     const taskToDeleteId = $(this).data('id');
