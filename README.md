@@ -1,7 +1,5 @@
 # SQL To-Do List
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
 ## Description
 
 This to-do applicaton allows a user to enter tasks and store them in a SQL database. Tasks can be marked complete as well as deleted. When marked complete, the user sees the time the task was completed. 
@@ -56,21 +54,40 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 ### Part 2: Read-GET-SELECT
 - [X] Make and test server GET route using router and SQL query SELECT
 - [X] Make and test client AJAX request to GET records from database
-- [X] Display tasks on page
+- [X] Display tasks on page by looping over objects in array from server
 
 ### Part 3: Create-POST-INSERT INTO
 - [X] Store values from input on click in task object
-- [X] Make client AJAX request to POST object to database
-- [X] Make server POST route using SQL query INSERT INTO
-- [X] Display all tasks on page
+- [X] Make and test client AJAX request to POST object to database
+- [X] Make and test server POST route using SQL query INSERT INTO
+- [X] Call getTask to display revised database tasks on page
 
 ### Part 4: Delete-DELETE-DELETE!
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [X] Create delete button with data property to store id of task clicked on
+- [X] Make and test client AJAX request to DELETE task from database using route parameter id
+- [X] Make and test server DELETE route using SQL query DELETE and task id 
+- [X] Call getTask to display revised database tasks on page
 
 ### Part 5: Update-PUT-UPDATE
+- [X] Create complete button with data property to store id of task clicked on
+- [X] Make and test client AJAX request to PUT task from database using route parameter id
+- [X] Make and test server PUT route using SQL query UPDATE, completed column, id
+- [X] Call getTask to display revised database tasks on page
+
+### Part 6: Add Features
+- [X] Bootstrap styling
+    - [X] Source in bootstrap to update buttons using button classes and input using form-control and input-group classes
+    - [X] Use media queries to to create breakpoints based on viewport widths
+- [X] Delete confirmation
+    - [X] Source in SweetAlert to change standard alert format and ask for confirmation before a user deletes a task
+- [X] Time completed
+    - [X] Create timestamp data columns in `todo` table for time task added and time task completed
+    - [X] Store date object when complete button clicked on. Send object with time completed property as part of AJAX PUT request
+    - [X] Update PUT route using SQL query UPDATE, time_completed column, id
+    - [X] Call getTask to display revised database tasks on page, now with completed time
+- [X] Task ordering
+    - [X] Update server GET route and SQL query SELECT to include ORDER BY
+    - [X] Sort tasks by completed status, then time completed, then time added
+    - [X] Call getTask to display revised order of database tasks on page
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).

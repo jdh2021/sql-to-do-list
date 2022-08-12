@@ -64,45 +64,7 @@ function getTask() {
     }).then(function(response) {
         console.log('Response from server is:', response);
         $('#task-list').empty();
-        for (let task of response) {
-            if (task.completed === true) {
-                const timeTaskCompleted= new Date(`${task.time_completed}`)
-                                        .toLocaleString('en-US', { hour12: true, hour: 'numeric', minute: '2-digit'})
-                                        .toLowerCase();
-                $('#task-list').append(`
-                    <div class="task-item completed-task">
-                        <div class="description-time">
-                            <span class="task-to-complete fade-strike">${task.description}</span>
-                            <span class="time-placeholder">${timeTaskCompleted}</span>
-                        </div>
-                        <div class="button-container">
-                            <button class="disabled-button" disabled>
-                                <i class="fa-solid fa-circle-check"></i>
-                            </button>
-                            <button class="delete-button" data-id="${task.id}">
-                                <i class="fa-solid fa-circle-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                `);
-            } else {
-                $('#task-list').append(`
-                    <div class="task-item uncompleted-task">
-                        <div class="description-time">
-                            <span class="task-to-complete">${task.description}</span>
-                        </div>
-                        <div class="button-container">
-                            <button class="complete-button" data-id="${task.id}">
-                                <i class="fa-regular fa-circle"></i>
-                            </button>
-                            <button class="delete-button" data-id="${task.id}">
-                                <i class="fa-solid fa-circle-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                `);
-            }
-        }
+        displayTask(response);
     }).catch(function(error) {
         console.log('Error:', error);
         swal({
@@ -113,7 +75,48 @@ function getTask() {
     });
 }
 
-//update time and completed status to true then getTask()
+function displayTask(response) {
+    for (let task of response) {
+        if (task.completed === true) {
+            const timeTaskCompleted= new Date(`${task.time_completed}`)
+                                    .toLocaleString('en-US', { hour12: true, hour: 'numeric', minute: '2-digit'})
+                                    .toLowerCase();
+            $('#task-list').append(`
+                <div class="task-item completed-task">
+                    <div class="description-time">
+                        <span class="task-to-complete fade-strike">${task.description}</span>
+                        <span class="time-placeholder">${timeTaskCompleted}</span>
+                    </div>
+                    <div class="button-container">
+                        <button class="disabled-button" disabled>
+                            <i class="fa-solid fa-circle-check"></i>
+                        </button>
+                        <button class="delete-button" data-id="${task.id}">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </button>
+                    </div>
+                </div>
+            `);
+        } else {
+            $('#task-list').append(`
+                <div class="task-item uncompleted-task">
+                    <div class="description-time">
+                        <span class="task-to-complete">${task.description}</span>
+                    </div>
+                    <div class="button-container">
+                        <button class="complete-button" data-id="${task.id}">
+                            <i class="fa-regular fa-circle"></i>
+                        </button>
+                        <button class="delete-button" data-id="${task.id}">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </button>
+                    </div>
+                </div>
+            `);
+        }
+    }
+}
+
 function completeTask () {
     console.log('in completeTask');
     const taskToUpdateId = $(this).data('id');
@@ -179,4 +182,5 @@ function deleteTask () {
         });
     });
 }
+
 
