@@ -77,10 +77,10 @@ function getTask() {
                         </div>
                         <div class="button-container">
                             <button class="disabled-button" disabled>
-                                <i class="fas fa-solid fa-calendar-check"></i>
+                                <i class="fa-solid fa-circle-check"></i>
                             </button>
                             <button class="delete-button" data-id="${task.id}">
-                                <i class="fas fa-solid fa-calendar-minus"></i>
+                                <i class="fa-solid fa-circle-minus"></i>
                             </button>
                         </div>
                     </div>
@@ -93,10 +93,10 @@ function getTask() {
                         </div>
                         <div class="button-container">
                             <button class="complete-button" data-id="${task.id}">
-                                <i class="fas fa-solid fa-calendar-check"></i></i>
+                                <i class="fa-regular fa-circle"></i>
                             </button>
                             <button class="delete-button" data-id="${task.id}">
-                                <i class="fas fa-solid fa-calendar-minus"></i>
+                                <i class="fa-solid fa-circle-minus"></i>
                             </button>
                         </div>
                     </div>

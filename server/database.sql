@@ -5,7 +5,7 @@ CREATE TABLE "todo" (
 	"description" varchar(240) not null unique,
 	"completed" boolean not null,
 	"time_added" timestamp with time zone not null,
-	"time_completed" timestamp with time zone);
+	"time_completed" timestamp with time zone );
 
 INSERT INTO "todo" ("description", "completed", "time_added", "time_completed")
 VALUES 	('fold laundry', false, '2022-08-11 11:22:40', null),

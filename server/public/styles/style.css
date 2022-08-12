@@ -48,7 +48,7 @@ h1 {
 #task-input {
     color: #36393B;
     font-size: 1.4rem;
-    padding: 0.15rem 0.5rem;
+    padding: 0.05rem 0.5rem;
     font-family: 'Caveat', cursive;
     background-color: #F7F0FD;
     /* border: thin solid #36393B; */
@@ -120,7 +120,7 @@ h1 {
 }
 
 .complete-button, .delete-button, .disabled-button {
-    padding: 0.1rem 0.45rem;
+    padding: 0.2rem 0.4rem 0 0.4rem;
     color: #36393B;
     border: thin #36393B solid;
     font-size: 1.1rem;
