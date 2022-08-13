@@ -2,7 +2,7 @@
 
 ## Description
 
-This to-do applicaton allows a user to enter tasks and store them in a SQL database. Tasks can be marked complete as well as deleted. When marked complete, the user sees the time the task was completed. 
+This to-do applicaton allows a user to enter tasks and store them in a SQL database. Tasks can be toggled between complete and incomplete and can also be deleted. When marked complete, the user sees the time the task was completed. 
 
 ## Screenshot
 
@@ -28,7 +28,7 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 
 1. Enter a new task by typing its description in the `do it!` field and then clicking the gold pen button. The task will be added to the task list below with a yellow background. 
 2. If a task was entered by mistake or no longer needed, click the salmon minus button. An alert will ask for confirmation before deleting. Click `OK` to delete or `Cancel` to keep.
-3. Complete a task by clicking the teal circle button. Once clicked, the yellow background disappears. The teal button displays a checkmark and is disabled. The task descripton appears with a strike-through, and the time the task was completed is logged to the right. 
+3. Complete a task by clicking the teal circle button. Once clicked, the yellow background disappears. The teal button displays a checkmark and is disabled. The task descripton appears with a strike-through, and the time the task was completed is logged to the right. If a task was marked done in error, click the teal checkmark button again and it will display again as an imcomplete task. 
 4. Tasks appear in order of whether they are complete, with incomplete tasks appearing first. If incomplete, they appear in order of when they were added. If complete, they appear in order of when they were completed. 
 5. Tasks are stored in a database so the information entered is retained even when the server is restarted.
 
@@ -82,7 +82,7 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 - [X] Time completed
     - [X] Create timestamp data columns in `todo` table for time task added and time task completed
     - [X] Store date object when complete button clicked on. Send object with time completed property as part of AJAX PUT request
-    - [X] Update PUT route using SQL query UPDATE, time_completed column, id
+    - [X] Update PUT route using SQL query UPDATE, completed column, time_completed column, id
     - [X] Call getTask to display revised database tasks on page, now with completed time
 - [X] Task ordering
     - [X] Update server GET route and SQL query SELECT to include ORDER BY

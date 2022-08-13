@@ -148,14 +148,6 @@ h1 {
     background-color: #f58c7c;
 }
 
-.disabled-button {
-    border-top-left-radius: 0.2rem;
-    border-bottom-left-radius: 0.2rem;
-    background-color: #61CECE;
-    border: thin solid #54B8B8;
-    opacity: 0.4;
-}
-
 .completed-task {
     border: none;
     background-color: #F7F0FD;
@@ -190,7 +182,6 @@ h1 {
     border: think solid #54B8B8;
 }
 
-
 @media (max-width: 575.98px) { 
     #header-container, #input-container {
         width: 70%;
@@ -198,7 +189,7 @@ h1 {
     #task-list {
         width: 90%;
     }
- }
+}
 
 @media (min-width: 576px) and (max-width: 767.98px) { 
     #header-container, #input-container {
@@ -231,7 +222,7 @@ h1 {
     #task-list {
         width: 55%;
     }
- }
+}
 
 @media (min-width: 1200px) { 
     #header-container {
@@ -243,4 +234,4 @@ h1 {
     #task-list {
         width: 45%;
     }
- }
+}
