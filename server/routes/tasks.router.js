@@ -1,18 +1,15 @@
 const express = require('express');
 const { Pool } = require('pg');
-const router = express.Router();
+const taskRouter = express.Router();
 const pool = require('../modules/pool.js');
 
-let taskToPost = '';
-
-router.post('/', (req, res) => {
+taskRouter.post('/', (req, res) => {
     console.log('in POST /tasks');
-    taskToPost = req.body;
+    let taskToPost = req.body;
     const queryText =   `INSERT INTO "todo" ("description", "completed", "time_added", "time_completed")
-                        VALUES ($1, $2, $3, $4);`
+                        VALUES ($1, $2, $3, $4);`;
     pool.query(queryText, [taskToPost.description, taskToPost.completed, taskToPost.time_added, taskToPost.time_completed])
         .then((results) => {
-            // console.log(results);
             res.send(results);
         }).catch((error) => {
             console.log('Error in POST /tasks', error);
@@ -20,7 +17,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.get('/', (req, res) => {
+taskRouter.get('/', (req, res) => {
     console.log('in GET /tasks');
     const queryText = 'SELECT * from "todo" ORDER BY "completed" ASC, "time_completed" ASC, "time_added" ASC;';
     pool.query(queryText)
@@ -32,9 +29,9 @@ router.get('/', (req, res) => {
         });
 });
 
-router.delete('/:id', (req, res) => {
+taskRouter.delete('/:id', (req, res) => {
     console.log('in DELETE /tasks');
-    const queryText = 'DELETE FROM "todo" WHERE "id" = $1;'
+    const queryText = 'DELETE FROM "todo" WHERE "id" = $1;';
     pool.query(queryText, [req.params.id])
         .then((results) => {
             res.sendStatus(200);
@@ -44,8 +41,8 @@ router.delete('/:id', (req, res) => {
         });
 });
 
-router.put('/:id', (req, res) => {
-    console.log('in PUT /task');
+taskRouter.put('/:id', (req, res) => {
+    console.log('in PUT /tasks');
     const taskId = req.params.id;
     const taskCompleted = req.body.completed;
     const timeTaskCompleted = req.body.time_completed;
@@ -63,4 +60,4 @@ router.put('/:id', (req, res) => {
         });
 });
 
-module.exports = router;
+module.exports = taskRouter;
