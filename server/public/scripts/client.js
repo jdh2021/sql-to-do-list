@@ -20,7 +20,7 @@ function getTask() {
     console.log('in getTask');
     $.ajax({
         method: 'GET',
-        url: '/tasks'
+        url: '/tasks',
     }).then(function(response) {
         console.log('Response from server is:', response);
         $('#task-list').empty();
@@ -28,20 +28,21 @@ function getTask() {
     }).catch(function(error) {
         console.log('Error:', error);
         swal({
-            text: "There's an error!",
-            icon: "warning",
+            text: 'There\'s an error!',
+            icon: 'warning',
             button: true,
         });
     });
 }
 
 /**
- * Takes in the response, an array of task objects, sent by the server from the GET route. Uses a conditional to check whether the completed property of the task object is true or false. If true, converts the date object from the time_completed property of the task to an hh:mm am/pm format. Also appends the task-item to the task-list container with the description, time completed, complete button, delete button, and completed styling class. If false, appends the task-item to the task-list container with the description and complete button, delete button and default styling for an uncompleted task-item. The complete and delete buttons for completed and uncompleted tasks store the id of each task using the data method. 
+ * Takes in the response, an array of task objects, sent by the server from the GET route. Uses a conditional to check whether the completed property of the task object is true or false. If true, converts the date object from the time_completed property of the task to an hh:mm am/pm format. Also appends the task-item to the task-list container with the description, time completed, complete button, delete button, and completed styling class. If false, appends the task-item to the task-list container with the description, complete button, delete button and default styling for an uncompleted task-item. The complete and delete buttons for completed and uncompleted tasks store the id of each task using the data method. 
  * 
  * @param {[array]} response 
  */
 
 function displayTask(response) {
+    console.log('in displayTask');
     for (let task of response) {
         if (task.completed === true) {
             const timeTaskCompleted= new Date(`${task.time_completed}`)
@@ -84,7 +85,8 @@ function displayTask(response) {
 }
 
 /**
- * On the click of the button with id task-button, uses a conditional to check whether the value of task-input field is undefined. If defined, the description property of the taskToPost object is assigned the value from the task-input element. The completed property of the task is assigned the value of false. A new date object is created. The year, month, date, hour, minutes and second at the time of click are stored in a string variable timeTaskAdded. The time_added property of the task object is then assigned the value of timeTaskAdded.
+ * On the click of the button with id task-button, uses a conditional to check whether the value of the task-input field is undefined. If not undefined, the description property of the taskToPost object is assigned the value from the element with id task-input. The completed property of the task ojbect is assigned the value of false. A new date object is created. The year, month, date, hour, minutes and seconds at the time of click are stored in a variable timeTaskAdded. The time_added property of the task object is then assigned the value of timeTaskAdded.
+ * 
  * @returns Returns false if the value of the task-input field is undefined and alerts the user to enter a task. 
  */
 
@@ -118,6 +120,7 @@ function addTask() {
  */
 
 function postTask() {
+    console.log('in postTask');
     $.ajax({
         method: 'POST',
         url: '/tasks',
@@ -129,15 +132,15 @@ function postTask() {
     }).catch(function(error) {
         console.log('Error:', error);
         swal({
-            text: "There's an error!",
-            icon: "warning",
+            text: 'There\'s an error!',
+            icon: 'warning',
             button: true,
         });
     });
 }
 
 /**
- * On click of an element with a class of complete-button, uses the data method to retrieve the task object id stored in it after function displayTask runs and assigns the id to variable taskToUpdateId. Then uses a conditional to check if the grandparent of the element clicked on has a class of completed-task or uncompleted-task. 
+ * On click of an element with a class of complete-button, uses the data method to retrieve the task object id stored in the element from when function displayTask ran. Assigns the value of the id to variable taskToUpdateId. Then uses a conditional to check if the grandparent of the element clicked on has a class of completed-task or uncompleted-task. 
  * 
  * If the grandparent element has a class of uncompleted-task, the completed property of the taskToPost object is assigned the value of true. A new date object is created. The year, month, date, hour, minutes, and seconds at the time of click are stored in a variable timeTaskCompleted. The time_added property of the task object is then assigned the value of timeTaskCompleted. Calls function updateTask.
  * 
@@ -147,7 +150,6 @@ function postTask() {
 function toggleComplete() {
     console.log('in toggleComplete');
     const taskToUpdateId = $(this).data('id');
-    console.log(taskToUpdateId);
     if ($(this).parent().parent().hasClass('uncompleted-task')) {
         taskToPost.completed = true;
         const now = new Date();
@@ -164,18 +166,19 @@ function toggleComplete() {
         taskToPost.completed = false;
         taskToPost.time_completed = taskToPost.empty_time; //workaround for DateTimeParseError, can't set time_completed directly to undefined or null
         console.log('Task marked incomplete.');
-        console.log(taskToPost);
         updateTask(taskToUpdateId);
     }
 }
 
 /**
- * Takes in taskToUpdateId, a number that corresponds to the id of the task object stored in the element clicked on from function toggleComplete. Makes an AJAX request of type PUT to the server with url: /tasks/taskToUpdateId and data as object taskToPost. If successful, logs the server's response. Calls function getTask. The time_completed property of the task object is assigned the value undefined through the creation of an undefined property empty_time. If unsuccessful, alerts an error. 
+ * Takes in taskToUpdateId, a number that is the value of the id property of the task object stored in the element clicked on from function toggleComplete. Makes an AJAX request of type PUT to the server with url: /tasks/taskToUpdateId and data as object taskToPost. If successful, logs the server's response. Calls function getTask. The time_completed property of the task object is assigned the value undefined through the creation of an undefined property empty_time. If unsuccessful, alerts an error. 
  * 
  * @param {number} taskToUpdateId 
  */
         
 function updateTask (taskToUpdateId) {
+    console.log('in updateTask');
+    console.log(taskToPost);
     $.ajax({
         method: 'PUT',
         url: `/tasks/${taskToUpdateId}`,
@@ -187,39 +190,43 @@ function updateTask (taskToUpdateId) {
     }).catch(function(error) {
         console.log('Error:', error);
         swal({
-            text: "There's an error!",
-            icon: "warning",
+            text: 'There\'s an error!',
+            icon: 'warning',
             button: true,
         });
     });
 }
 
 /**
- * On click of an element with a class of delete-button, uses the data method to retrieve the task object id stored in it after function displayTask runs and assigns the id to variable taskToDeleteId. Alerts to check if record should be deleted. If delete is canceled, returns false. If delete is confirmed, makes an AJAX request of type DELETE to the server with url: /tasks/taskToDeleteId.  If successful, logs the server's response and alerts the task was deleted. If unsuccesful, alerts an error. 
+ * On click of an element with a class of delete-button, uses the data method to retrieve the task object id stored in it after function displayTask runs and assigns the id to variable taskToDeleteId. Alerts to check if record should be deleted. If delete is canceled, returns false. If delete is confirmed, makes an AJAX request of type DELETE to the server with url: /tasks/taskToDeleteId.  If successful, logs the server's response and alerts the task was deleted. If unsuccessful, alerts an error. 
  */
 
 function deleteTask () {
     console.log('in deleteTask');
     const taskToDeleteId = $(this).data('id');
     swal({
-        text: "Are you sure you want to remove this?",
-        icon: "warning",
+        text: 'Are you sure you want to remove this?',
+        icon: 'warning',
         buttons: true,
         dangerMode: true,
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
                 method: 'DELETE',
-                url: `/tasks/${taskToDeleteId}`
+                url: `/tasks/${taskToDeleteId}`,
             }).then(function(response) {
                 console.log('Response from server is:', response);
                 getTask();
             }).catch(function(error) {
                 console.log('Error:', error);
-                alert('There\'s an error.');
+                swal({
+                    text: 'There\'s an error!',
+                    icon: 'warning',
+                    button: true,
+                });
             });
-            swal("Success: Task deleted!", {
-                icon: "success",
+            swal('Success: Task deleted!', {
+                icon: 'success',
             });
         } else {
             return false;
@@ -227,8 +234,8 @@ function deleteTask () {
     }).catch(function(error) {
         console.log('Error:', error);
         swal({
-            text: "There's an error!",
-            icon: "warning",
+            text: 'There\'s an error!',
+            icon: 'warning',
             button: true,
         });
     });

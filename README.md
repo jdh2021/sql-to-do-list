@@ -4,16 +4,18 @@
 
 This to-do applicaton allows a user to enter tasks and store them in a SQL database. Tasks can be toggled between complete and incomplete and can also be deleted. When marked complete, the user sees the time the task was completed. 
 
-## Screenshot
+## Demo
+
+![](todolist.gif); 
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- [Nodemon] (https://www.npmjs.com/package/nodemon)
-- [Express] (http://expressjs.com/)
-- [PostgreSQL] (https://www.postgresql.org/)
-- [Node-postgres] (https://node-postgres.com/)
-- [Postico] (https://eggerapps.at/postico/)
+- [Nodemon](https://www.npmjs.com/package/nodemon)
+- [Express](http://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Node-postgres](https://node-postgres.com/)
+- [Postico](https://eggerapps.at/postico/)
 
 ### Installation
 
@@ -34,11 +36,7 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 
 ## Built With
 
-- Node.js 
-- Express
-- Bootstrap
-- jQuery
-- PostgreSQL
+Node.js | Express | Bootstrap | jQuery | PostgreSQL
 
 ## To-Done List
 
@@ -75,18 +73,16 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 
 ### Part 6: Add Features
 - [X] Bootstrap styling
-    - [X] Source in bootstrap to update buttons using button classes and input using form-control and input-group classes
-    - [X] Use media queries to to create breakpoints based on viewport widths
+    - Source in bootstrap to update buttons using button classes and input using form-control and input-group classes
+    - Use media queries to to create breakpoints based on viewport widths
 - [X] Delete confirmation
-    - [X] Source in SweetAlert to change standard alert format and ask for confirmation before a user deletes a task
+    - Source in SweetAlert to change standard alert format and ask for confirmation before a user deletes a task
 - [X] Time completed
-    - [X] Create timestamp data columns in `todo` table for time task added and time task completed
-    - [X] Store date object when complete button clicked on. Send object with time completed property as part of AJAX PUT request
-    - [X] Update PUT route using SQL query UPDATE, completed column, time_completed column, id
-    - [X] Call getTask to display revised database tasks on page, now with completed time
+    - Create timestamp data columns in `todo` table for time task added and time task completed
+    - Store date object when complete button clicked on. Send object with time completed property as part of AJAX PUT request
+    - Update PUT route using SQL query UPDATE, completed column, time_completed column, id
+    - Call getTask to display revised database tasks on page, now with completed time
 - [X] Task ordering
-    - [X] Update server GET route and SQL query SELECT to include ORDER BY
-    - [X] Sort tasks by completed status, then time completed, then time added
-    - [X] Call getTask to display revised order of database tasks on page
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+    - Update server GET route and SQL query SELECT to include ORDER BY
+    - Sort tasks by completed status, then time completed, then time added
+    - Call getTask to display revised order of database tasks on page
