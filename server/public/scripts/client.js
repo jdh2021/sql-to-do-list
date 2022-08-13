@@ -85,35 +85,44 @@ function displayTask(response) {
 }
 
 /**
- * On the click of the button with id task-button, uses a conditional to check whether the value of the task-input field is undefined. If not undefined, the description property of the taskToPost object is assigned the value from the element with id task-input. The completed property of the task ojbect is assigned the value of false. A new date object is created. The year, month, date, hour, minutes and seconds at the time of click are stored in a variable timeTaskAdded. The time_added property of the task object is then assigned the value of timeTaskAdded.
+ * On the click of the button with id task-button, uses a conditional to check whether the value of the task-input field is undefined or more than 40 characters long. If not undefined, the description property of the taskToPost object is assigned the value from the element with id task-input. The completed property of the task ojbect is assigned the value of false. A new date object is created. The year, month, date, hour, minutes and seconds at the time of click are stored in a variable timeTaskAdded. The time_added property of the task object is then assigned the value of timeTaskAdded.
  * 
- * @returns Returns false if the value of the task-input field is undefined and alerts the user to enter a task. 
+ * @returns Returns false if the value from the task-input field is undefined and alerts the user to enter a task. Returns false if the length of the value from the task-input field is more than 40 characters and alerts the user to shorten the task description.
  */
 
 function addTask() {
     console.log('in addTask');
-    if ($('#task-input').val() === '') {
+    let taskDescription = $('#task-input').val();
+    if (taskDescription === '') {
         swal({
-            text: "Please enter a task!",
-            icon: "warning",
+            text: 'Please enter a task!',
+            icon: 'warning',
             button: true,
         });
         return false;
-    } else {
-        taskToPost.description = $('#task-input').val();
-        taskToPost.completed = false;
-        const now = new Date();
-        let timeTaskAdded = String(now.getFullYear()) + '-' + 
-                            String(now.getMonth()+1).padStart(2,0) + '-' + 
-                            String(now.getDate()).padStart(2,0) + ' ' + 
-                            String(now.getHours()).padStart(2,0) + ':' + 
-                            String(now.getMinutes()).padStart(2, 0) + ':' + 
-                            String(now.getSeconds()).padStart(2, 0);
-        console.log('Time task added:', timeTaskAdded);
-        taskToPost.time_added = timeTaskAdded;
-        postTask();
     }
+    if ($('#task-input').val().length > 40) {
+        swal({
+            text: 'Your task is more than 40 characters. Please shorten it!',
+            icon: 'warning',
+            button: true,
+        });
+        return false;
+    }
+    taskToPost.description = $('#task-input').val();
+    taskToPost.completed = false;
+    const now = new Date();
+    let timeTaskAdded = String(now.getFullYear()) + '-' + 
+                         String(now.getMonth()+1).padStart(2,0) + '-' + 
+                        String(now.getDate()).padStart(2,0) + ' ' + 
+                        String(now.getHours()).padStart(2,0) + ':' + 
+                        String(now.getMinutes()).padStart(2, 0) + ':' + 
+                        String(now.getSeconds()).padStart(2, 0);
+    console.log('Time task added:', timeTaskAdded);
+    taskToPost.time_added = timeTaskAdded;
+    postTask();
 }
+
 
 /**
  * Makes an AJAX request of type POST to the server with url: /tasks and data as object taskToPost. If successful, logs the server's response and empties the element with id task-input. If unsuccesful, alerts an error. 
@@ -178,7 +187,6 @@ function toggleComplete() {
         
 function updateTask (taskToUpdateId) {
     console.log('in updateTask');
-    console.log(taskToPost);
     $.ajax({
         method: 'PUT',
         url: `/tasks/${taskToUpdateId}`,

@@ -112,7 +112,6 @@ h1 {
 .button-container {
     /* border: 1px solid fuchsia; */
     display: flex;
-    
 }
 
 .complete-button, .delete-button, .disabled-button {
