@@ -7,7 +7,7 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 ## Demo
 
 <p align ="center">
-![](todolist.gif)
+    <img src="todolist.gif" />   
 </p>
 
 ### Prerequisites
