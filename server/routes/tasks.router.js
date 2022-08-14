@@ -31,7 +31,7 @@ taskRouter.get('/', (req, res) => {
 
 taskRouter.delete('/:id', (req, res) => {
     console.log('in DELETE /tasks');
-    const queryText = 'DELETE FROM "todo" WHERE "id" = $1;';
+    const queryText = `DELETE FROM "todo" WHERE "id" = $1;`;
     pool.query(queryText, [req.params.id])
         .then((results) => {
             res.sendStatus(200);
@@ -46,9 +46,9 @@ taskRouter.put('/:id', (req, res) => {
     const taskId = req.params.id;
     const taskCompleted = req.body.completed;
     const timeTaskCompleted = req.body.time_completed;
-    console.log(taskId);
-    console.log(taskCompleted);
-    console.log(timeTaskCompleted);
+    console.log('Task id:', taskId);
+    console.log('Task completed status:', taskCompleted);
+    console.log('Time task completed:', timeTaskCompleted);
     const queryText =  `UPDATE "todo" SET "completed" = $1,
                         "time_completed" = $2
                         WHERE "id" = $3 ;`;

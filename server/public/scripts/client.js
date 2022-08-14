@@ -51,7 +51,7 @@ function displayTask(response) {
             $('#task-list').append(`
                 <div class="task-item completed-task">
                     <div class="description-time">
-                        <span class="task-to-complete fade-strike">${task.description}</span>
+                        <span class="fade-strike">${task.description}</span>
                         <span class="time-placeholder">${timeTaskCompleted}</span>
                     </div>
                     <div class="button-container">
@@ -68,7 +68,7 @@ function displayTask(response) {
             $('#task-list').append(`
                 <div class="task-item uncompleted-task">
                     <div class="description-time">
-                        <span class="task-to-complete">${task.description}</span>
+                        <span>${task.description}</span>
                     </div>
                     <div class="button-container">
                         <button class="complete-button" data-id="${task.id}">

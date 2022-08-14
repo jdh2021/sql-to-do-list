@@ -30,15 +30,14 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 
 1. Enter a new task by typing its description in the `do it!` field and then clicking the gold pen button. The task will be added to the task list with a yellow background. 
 2. If a task was entered by mistake or no longer needed, click the salmon minus button. An alert will ask for confirmation before deleting. Click `OK` to delete or `Cancel` to keep.
-3. Complete a task by clicking the teal circle button. Once clicked, the yellow background disappears. The teal button displays a check mark. The task descripton appears with a strike-through, and the time the task was completed is logged to the right. If a task was marked done in error, click the teal check mark button again, and it will display as an incomplete task. 
-4. Tasks appear in order of whether they are complete, with incomplete tasks appearing first. If incomplete, they appear in order of when they were added. If complete, they appear in order of when they were completed. 
-5. Tasks are stored in a database so the information entered is retained even when the server is restarted.
+3. Complete a task by clicking the teal circle button. Once clicked, the yellow background disappears. The teal button now displays a check mark. The task description appears with a strike-through, and the time the task was completed is logged to the right. If a task was marked done in error, click the teal check mark button again, and its status will change back to incomplete.
+4. Tasks appear in order of whether they are complete, with incomplete tasks appearing first. If incomplete, they appear in order of when they were added. If complete, they appear in order of when they were completed. Tasks are stored in a database so the information entered is retained even when the server is restarted.
 
 ## Built With
 
 Node.js | Express | Bootstrap | jQuery | PostgreSQL
 
-### To-Done List
+### Checklist
 
 #### Part 1: Set It Up
 - [X] Set up file structure for application
@@ -71,7 +70,7 @@ Node.js | Express | Bootstrap | jQuery | PostgreSQL
 - [X] Make and test server PUT route using SQL query UPDATE, completed column, id
 - [X] Call getTask to display revised database tasks on page
 
-### Part 6: Add Features
+#### Part 6: Add Features
 - [X] Bootstrap styling
     - Source in bootstrap to update buttons using button classes and input using form-control and input-group classes
     - Use media queries to to create breakpoints based on viewport widths
