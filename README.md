@@ -6,7 +6,9 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 
 ## Demo
 
-![](todolist.gif); 
+<p align ="center">
+![](todolist.gif)
+</p>
 
 ### Prerequisites
 
@@ -37,9 +39,9 @@ This to-do applicaton allows a user to enter tasks and store them in a SQL datab
 
 Node.js | Express | Bootstrap | jQuery | PostgreSQL
 
-### Checklist
+## Checklist
 
-#### Part 1: Set It Up
+### Part 1: Set It Up
 - [X] Set up file structure for application
 - [X] Install Express and pg
 - [X] Create initial layout including input field for index.html 
@@ -47,30 +49,30 @@ Node.js | Express | Bootstrap | jQuery | PostgreSQL
 - [X] Spin up server
 - [X] Make new database and create table query with needed data types in Postico. Test with sample data. 
 
-#### Part 2: Read-GET-SELECT
+### Part 2: Read-GET-SELECT
 - [X] Make and test server GET route using router and SQL query SELECT
 - [X] Make and test client AJAX request to GET records from database
 - [X] Display tasks on page by looping over objects in array from server
 
-#### Part 3: Create-POST-INSERT INTO
+### Part 3: Create-POST-INSERT INTO
 - [X] Store values from input on click in task object
 - [X] Make and test client AJAX request to POST object to database
 - [X] Make and test server POST route using SQL query INSERT INTO
 - [X] Call getTask to display revised database tasks on page
 
-#### Part 4: Delete-DELETE-DELETE!
+### Part 4: Delete-DELETE-DELETE!
 - [X] Create delete button with data property to store id of task clicked on
 - [X] Make and test client AJAX request to DELETE task from database using route parameter id
 - [X] Make and test server DELETE route using SQL query DELETE and task id 
 - [X] Call getTask to display revised database tasks on page
 
-#### Part 5: Update-PUT-UPDATE
+### Part 5: Update-PUT-UPDATE
 - [X] Create complete button with data property to store id of task clicked on
 - [X] Make and test client AJAX request to PUT task from database using route parameter id
 - [X] Make and test server PUT route using SQL query UPDATE, completed column, id
 - [X] Call getTask to display revised database tasks on page
 
-#### Part 6: Add Features
+### Part 6: Add Features
 - [X] Bootstrap styling
     - Source in bootstrap to update buttons using button classes and input using form-control and input-group classes
     - Use media queries to to create breakpoints based on viewport widths
