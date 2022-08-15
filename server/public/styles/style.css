@@ -16,7 +16,6 @@ h1 {
 }
 
 #header-input-container {
-    /* border: 1px solid blue; */
     width: 100%;
     margin: auto;
     display: flex;
@@ -25,13 +24,11 @@ h1 {
 }
 
 #header-container {
-    /* border: 1px solid green; */
     text-align: center;
     margin-top: 1rem;
 }
 
 #input-container {
-    /* border: 1px solid yellow; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -49,8 +46,8 @@ h1 {
 
 #task-input:focus {
     outline: none;
-    border: thin solid #9d8eae;
-    box-shadow: 0 0 0.4rem #9d8eae;
+    border: thin solid #9D8EAE;
+    box-shadow: 0 0 0.4rem #9D8EAE;
 }
 
 #task-button {
@@ -68,16 +65,15 @@ h1 {
 #task-button:hover {
     cursor: pointer;
     color: white;
-    background-color: #deb41e;
+    background-color: #DEB41E;
 }
 
 #task-list {
-    /* border: 1px solid yellow; */
     width: 75%;
     background-color: #F7F0FD;
     border-radius: 0.25rem;
     padding: 0.4rem;
-    box-shadow: 0 0 0.6rem #9d8eae;
+    box-shadow: 0 0 0.6rem #9D8EAE;
 }
 
 #task-list:empty { 
@@ -85,7 +81,6 @@ h1 {
 }
 
 #task-container {
-    /* border: 1px solid red; */
     width: 100%;
     margin: auto;
     display: flex;
@@ -95,7 +90,6 @@ h1 {
 }
 
 .task-item {
-    /* border: 1px solid lawngreen; */
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -106,18 +100,16 @@ h1 {
     background-color: #F7F0FD;
     border-radius: 0.4rem;
     background-color: #FFEAA0;
-    border: thin solid #fde58f;
+    border: thin solid #FDE58F;
 }
 
 .button-container {
-    /* border: 1px solid fuchsia; */
     display: flex;
 }
 
-.complete-button, .delete-button, .disabled-button {
+.complete-button, .delete-button {
     padding: 0.2rem 0.4rem 0 0.4rem;
     color: #36393B;
-    border: thin #36393B solid;
     font-size: 1.1rem;
 }
 
@@ -133,8 +125,8 @@ h1 {
     cursor: pointer;
     border-top-right-radius: 0.2rem;
     border-bottom-right-radius: 0.2rem;
-    background-color: #ffa99c;
-    border: thin solid #f58c7c;
+    background-color: #FFA99C;
+    border: thin solid #F58C7C;
 }
 
 .complete-button:hover {
@@ -144,7 +136,7 @@ h1 {
 
 .delete-button:hover {
     color: white;
-    background-color: #f58c7c;
+    background-color: #F58C7C;
 }
 
 .completed-task {

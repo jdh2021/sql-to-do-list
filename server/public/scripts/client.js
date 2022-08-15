@@ -2,6 +2,10 @@ console.log('javascript sourced');
 
 $(readyNow);
 
+/**
+ * When the DOM is loaded, calls function getTask. On the click of a button with id task-button, calls function addTask. On the click of an element in the body with a class of complete-button, calls function toggleComplete. On the click of an element in the body with a class of delete-button, calls function deleteTask. 
+ */
+
 function readyNow() {
     console.log('in readyNow, jQuery sourced');
     getTask();
@@ -36,7 +40,7 @@ function getTask() {
 }
 
 /**
- * Takes in the response, an array of task objects, sent by the server from the GET route. Uses a conditional to check whether the completed property of the task object is true or false. If true, converts the date object from the time_completed property of the task to an hh:mm am/pm format. Also appends the task-item to the task-list container with the description, time completed, complete button, delete button, and completed styling class. If false, appends the task-item to the task-list container with the description, complete button, delete button and default styling for an uncompleted task-item. The complete and delete buttons for completed and uncompleted tasks store the id of each task using the data method. 
+ * Takes in the response, an array of task objects, sent by the server from the GET route. Uses a conditional to check whether the completed property of the task object is true or false. If true, converts the date object from the time_completed property of the task to an hh:mm am/pm format. Also appends the task-item to the task-list container with the description, time completed, complete button, delete button, and completed styling class. If false, appends the task-item to the task-list container with the description, complete button, delete button, and default styling for an uncompleted task-item. The complete and delete buttons for completed and uncompleted tasks store the id of each task using the data method. 
  * 
  * @param {[array]} response 
  */
@@ -85,7 +89,7 @@ function displayTask(response) {
 }
 
 /**
- * On the click of the button with id task-button, uses a conditional to check whether the value of the task-input field is undefined or more than 40 characters long. If not undefined, the description property of the taskToPost object is assigned the value from the element with id task-input. The completed property of the task ojbect is assigned the value of false. A new date object is created. The year, month, date, hour, minutes and seconds at the time of click are stored in a variable timeTaskAdded. The time_added property of the task object is then assigned the value of timeTaskAdded.
+ * On the click of the button with id task-button, uses a conditional to check whether the value of the task-input field is undefined or more than 40 characters long. If not undefined, the description property of the taskToPost object is assigned the value from the element with id task-input. The completed property of the task ojbect is assigned the value of false. A new date object is created. The year, month, date, hour, minutes, and seconds at the time of click are stored in a variable timeTaskAdded. The time_added property of the task object is then assigned the value of timeTaskAdded.
  * 
  * @returns Returns false if the value from the task-input field is undefined and alerts the user to enter a task. Returns false if the length of the value from the task-input field is more than 40 characters and alerts the user to shorten the task description.
  */
@@ -125,7 +129,7 @@ function addTask() {
 
 
 /**
- * Makes an AJAX request of type POST to the server with url: /tasks and data as object taskToPost. If successful, logs the server's response and empties the element with id task-input. If unsuccesful, alerts an error. 
+ * Makes an AJAX request of type POST to the server with url: /tasks and data as object taskToPost. If successful, logs the server's response and empties the element with id task-input. If unsuccessful, alerts an error. 
  */
 
 function postTask() {
@@ -149,7 +153,7 @@ function postTask() {
 }
 
 /**
- * On click of an element with a class of complete-button, uses the data method to retrieve the task object id stored in the element from when function displayTask ran. Assigns the value of the id to variable taskToUpdateId. Then uses a conditional to check if the grandparent of the element clicked on has a class of completed-task or uncompleted-task. 
+ * On click of an element with a class of complete-button, uses the data method to retrieve the task object id stored in the element from when function displayTask ran. Assigns the value of the id to variable taskToUpdateId. Then uses a conditional to check if the grandparent element of the element clicked on has a class of completed-task or uncompleted-task. 
  * 
  * If the grandparent element has a class of uncompleted-task, the completed property of the taskToPost object is assigned the value of true. A new date object is created. The year, month, date, hour, minutes, and seconds at the time of click are stored in a variable timeTaskCompleted. The time_added property of the task object is then assigned the value of timeTaskCompleted. Calls function updateTask.
  * 
